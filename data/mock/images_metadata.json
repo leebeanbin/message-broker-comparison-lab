@@ -1,0 +1,742 @@
+{
+  "processing_requests": [
+    {
+      "task_id": "img_task_001",
+      "image_url": "https://picsum.photos/id/251/1920/1080",
+      "original_width": 1920,
+      "original_height": 1080,
+      "target_width": 800,
+      "target_height": 600,
+      "format": "jpeg",
+      "quality": 80,
+      "filters": [
+        "sharpen",
+        "contrast"
+      ],
+      "priority": 5,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_002",
+      "image_url": "https://picsum.photos/id/96/2560/1440",
+      "original_width": 2560,
+      "original_height": 1440,
+      "target_width": 800,
+      "target_height": 600,
+      "format": "jpeg",
+      "quality": 80,
+      "filters": [],
+      "priority": 5,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_003",
+      "image_url": "https://picsum.photos/id/734/800/600",
+      "original_width": 800,
+      "original_height": 600,
+      "target_width": 800,
+      "target_height": 600,
+      "format": "webp",
+      "quality": 95,
+      "filters": [
+        "grayscale"
+      ],
+      "priority": 2,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_004",
+      "image_url": "https://picsum.photos/id/829/2560/1440",
+      "original_width": 2560,
+      "original_height": 1440,
+      "target_width": 640,
+      "target_height": 480,
+      "format": "jpeg",
+      "quality": 80,
+      "filters": [
+        "grayscale",
+        "sepia"
+      ],
+      "priority": 3,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_005",
+      "image_url": "https://picsum.photos/id/105/3840/2160",
+      "original_width": 3840,
+      "original_height": 2160,
+      "target_width": 400,
+      "target_height": 300,
+      "format": "jpeg",
+      "quality": 90,
+      "filters": [
+        "sharpen",
+        "sepia"
+      ],
+      "priority": 3,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_006",
+      "image_url": "https://picsum.photos/id/748/800/600",
+      "original_width": 800,
+      "original_height": 600,
+      "target_width": 200,
+      "target_height": 150,
+      "format": "png",
+      "quality": 95,
+      "filters": [],
+      "priority": 1,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_007",
+      "image_url": "https://picsum.photos/id/850/2560/1440",
+      "original_width": 2560,
+      "original_height": 1440,
+      "target_width": 800,
+      "target_height": 600,
+      "format": "webp",
+      "quality": 95,
+      "filters": [
+        "sepia",
+        "blur"
+      ],
+      "priority": 1,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_008",
+      "image_url": "https://picsum.photos/id/82/1920/1080",
+      "original_width": 1920,
+      "original_height": 1080,
+      "target_width": 400,
+      "target_height": 300,
+      "format": "jpeg",
+      "quality": 75,
+      "filters": [
+        "grayscale",
+        "sepia"
+      ],
+      "priority": 4,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_009",
+      "image_url": "https://picsum.photos/id/364/1280/720",
+      "original_width": 1280,
+      "original_height": 720,
+      "target_width": 400,
+      "target_height": 300,
+      "format": "jpeg",
+      "quality": 85,
+      "filters": [
+        "sharpen",
+        "blur"
+      ],
+      "priority": 5,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_010",
+      "image_url": "https://picsum.photos/id/389/3840/2160",
+      "original_width": 3840,
+      "original_height": 2160,
+      "target_width": 400,
+      "target_height": 300,
+      "format": "png",
+      "quality": 95,
+      "filters": [
+        "blur",
+        "sepia",
+        "sharpen"
+      ],
+      "priority": 2,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_011",
+      "image_url": "https://picsum.photos/id/275/1920/1080",
+      "original_width": 1920,
+      "original_height": 1080,
+      "target_width": 200,
+      "target_height": 150,
+      "format": "jpeg",
+      "quality": 80,
+      "filters": [
+        "contrast",
+        "sepia",
+        "sharpen"
+      ],
+      "priority": 4,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_012",
+      "image_url": "https://picsum.photos/id/272/2560/1440",
+      "original_width": 2560,
+      "original_height": 1440,
+      "target_width": 1280,
+      "target_height": 720,
+      "format": "jpeg",
+      "quality": 80,
+      "filters": [
+        "contrast"
+      ],
+      "priority": 5,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_013",
+      "image_url": "https://picsum.photos/id/920/1280/720",
+      "original_width": 1280,
+      "original_height": 720,
+      "target_width": 640,
+      "target_height": 480,
+      "format": "webp",
+      "quality": 90,
+      "filters": [
+        "sepia",
+        "blur",
+        "sharpen"
+      ],
+      "priority": 5,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_014",
+      "image_url": "https://picsum.photos/id/882/2560/1440",
+      "original_width": 2560,
+      "original_height": 1440,
+      "target_width": 800,
+      "target_height": 600,
+      "format": "jpeg",
+      "quality": 80,
+      "filters": [],
+      "priority": 2,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_015",
+      "image_url": "https://picsum.photos/id/395/2560/1440",
+      "original_width": 2560,
+      "original_height": 1440,
+      "target_width": 640,
+      "target_height": 480,
+      "format": "png",
+      "quality": 95,
+      "filters": [],
+      "priority": 4,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_016",
+      "image_url": "https://picsum.photos/id/697/800/600",
+      "original_width": 800,
+      "original_height": 600,
+      "target_width": 200,
+      "target_height": 150,
+      "format": "webp",
+      "quality": 75,
+      "filters": [],
+      "priority": 5,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_017",
+      "image_url": "https://picsum.photos/id/301/1280/720",
+      "original_width": 1280,
+      "original_height": 720,
+      "target_width": 200,
+      "target_height": 150,
+      "format": "png",
+      "quality": 80,
+      "filters": [],
+      "priority": 4,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_018",
+      "image_url": "https://picsum.photos/id/520/1920/1080",
+      "original_width": 1920,
+      "original_height": 1080,
+      "target_width": 200,
+      "target_height": 150,
+      "format": "jpeg",
+      "quality": 85,
+      "filters": [
+        "contrast"
+      ],
+      "priority": 5,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_019",
+      "image_url": "https://picsum.photos/id/781/3840/2160",
+      "original_width": 3840,
+      "original_height": 2160,
+      "target_width": 400,
+      "target_height": 300,
+      "format": "jpeg",
+      "quality": 95,
+      "filters": [
+        "contrast",
+        "sharpen"
+      ],
+      "priority": 5,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_020",
+      "image_url": "https://picsum.photos/id/115/1280/720",
+      "original_width": 1280,
+      "original_height": 720,
+      "target_width": 1280,
+      "target_height": 720,
+      "format": "png",
+      "quality": 85,
+      "filters": [],
+      "priority": 2,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_021",
+      "image_url": "https://picsum.photos/id/88/1920/1080",
+      "original_width": 1920,
+      "original_height": 1080,
+      "target_width": 400,
+      "target_height": 300,
+      "format": "webp",
+      "quality": 90,
+      "filters": [],
+      "priority": 1,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_022",
+      "image_url": "https://picsum.photos/id/676/800/600",
+      "original_width": 800,
+      "original_height": 600,
+      "target_width": 400,
+      "target_height": 300,
+      "format": "png",
+      "quality": 95,
+      "filters": [
+        "blur"
+      ],
+      "priority": 3,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_023",
+      "image_url": "https://picsum.photos/id/988/800/600",
+      "original_width": 800,
+      "original_height": 600,
+      "target_width": 640,
+      "target_height": 480,
+      "format": "jpeg",
+      "quality": 95,
+      "filters": [
+        "blur",
+        "sepia",
+        "contrast"
+      ],
+      "priority": 3,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_024",
+      "image_url": "https://picsum.photos/id/124/2560/1440",
+      "original_width": 2560,
+      "original_height": 1440,
+      "target_width": 640,
+      "target_height": 480,
+      "format": "jpeg",
+      "quality": 80,
+      "filters": [
+        "sharpen",
+        "sepia",
+        "contrast"
+      ],
+      "priority": 5,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_025",
+      "image_url": "https://picsum.photos/id/8/800/600",
+      "original_width": 800,
+      "original_height": 600,
+      "target_width": 400,
+      "target_height": 300,
+      "format": "jpeg",
+      "quality": 75,
+      "filters": [
+        "blur"
+      ],
+      "priority": 1,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_026",
+      "image_url": "https://picsum.photos/id/527/1920/1080",
+      "original_width": 1920,
+      "original_height": 1080,
+      "target_width": 200,
+      "target_height": 150,
+      "format": "jpeg",
+      "quality": 85,
+      "filters": [],
+      "priority": 4,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_027",
+      "image_url": "https://picsum.photos/id/741/3840/2160",
+      "original_width": 3840,
+      "original_height": 2160,
+      "target_width": 640,
+      "target_height": 480,
+      "format": "webp",
+      "quality": 95,
+      "filters": [
+        "grayscale"
+      ],
+      "priority": 2,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_028",
+      "image_url": "https://picsum.photos/id/97/2560/1440",
+      "original_width": 2560,
+      "original_height": 1440,
+      "target_width": 1280,
+      "target_height": 720,
+      "format": "jpeg",
+      "quality": 90,
+      "filters": [
+        "sepia"
+      ],
+      "priority": 4,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_029",
+      "image_url": "https://picsum.photos/id/690/2560/1440",
+      "original_width": 2560,
+      "original_height": 1440,
+      "target_width": 1280,
+      "target_height": 720,
+      "format": "webp",
+      "quality": 75,
+      "filters": [],
+      "priority": 1,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_030",
+      "image_url": "https://picsum.photos/id/255/2560/1440",
+      "original_width": 2560,
+      "original_height": 1440,
+      "target_width": 200,
+      "target_height": 150,
+      "format": "jpeg",
+      "quality": 80,
+      "filters": [],
+      "priority": 5,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_031",
+      "image_url": "https://picsum.photos/id/188/2560/1440",
+      "original_width": 2560,
+      "original_height": 1440,
+      "target_width": 400,
+      "target_height": 300,
+      "format": "png",
+      "quality": 90,
+      "filters": [
+        "blur",
+        "sharpen",
+        "contrast"
+      ],
+      "priority": 5,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_032",
+      "image_url": "https://picsum.photos/id/993/1920/1080",
+      "original_width": 1920,
+      "original_height": 1080,
+      "target_width": 800,
+      "target_height": 600,
+      "format": "jpeg",
+      "quality": 80,
+      "filters": [],
+      "priority": 2,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_033",
+      "image_url": "https://picsum.photos/id/219/2560/1440",
+      "original_width": 2560,
+      "original_height": 1440,
+      "target_width": 1280,
+      "target_height": 720,
+      "format": "png",
+      "quality": 75,
+      "filters": [
+        "blur",
+        "grayscale",
+        "sharpen"
+      ],
+      "priority": 4,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_034",
+      "image_url": "https://picsum.photos/id/434/1280/720",
+      "original_width": 1280,
+      "original_height": 720,
+      "target_width": 1280,
+      "target_height": 720,
+      "format": "webp",
+      "quality": 95,
+      "filters": [
+        "grayscale",
+        "blur"
+      ],
+      "priority": 2,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_035",
+      "image_url": "https://picsum.photos/id/594/1280/720",
+      "original_width": 1280,
+      "original_height": 720,
+      "target_width": 400,
+      "target_height": 300,
+      "format": "webp",
+      "quality": 95,
+      "filters": [],
+      "priority": 1,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_036",
+      "image_url": "https://picsum.photos/id/599/1280/720",
+      "original_width": 1280,
+      "original_height": 720,
+      "target_width": 800,
+      "target_height": 600,
+      "format": "png",
+      "quality": 95,
+      "filters": [],
+      "priority": 5,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_037",
+      "image_url": "https://picsum.photos/id/872/3840/2160",
+      "original_width": 3840,
+      "original_height": 2160,
+      "target_width": 800,
+      "target_height": 600,
+      "format": "jpeg",
+      "quality": 75,
+      "filters": [],
+      "priority": 5,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_038",
+      "image_url": "https://picsum.photos/id/123/1920/1080",
+      "original_width": 1920,
+      "original_height": 1080,
+      "target_width": 400,
+      "target_height": 300,
+      "format": "webp",
+      "quality": 80,
+      "filters": [
+        "contrast",
+        "sharpen",
+        "sepia"
+      ],
+      "priority": 1,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_039",
+      "image_url": "https://picsum.photos/id/958/2560/1440",
+      "original_width": 2560,
+      "original_height": 1440,
+      "target_width": 640,
+      "target_height": 480,
+      "format": "png",
+      "quality": 80,
+      "filters": [
+        "sepia",
+        "blur"
+      ],
+      "priority": 3,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_040",
+      "image_url": "https://picsum.photos/id/469/2560/1440",
+      "original_width": 2560,
+      "original_height": 1440,
+      "target_width": 400,
+      "target_height": 300,
+      "format": "png",
+      "quality": 75,
+      "filters": [
+        "sharpen",
+        "grayscale"
+      ],
+      "priority": 5,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_041",
+      "image_url": "https://picsum.photos/id/551/800/600",
+      "original_width": 800,
+      "original_height": 600,
+      "target_width": 800,
+      "target_height": 600,
+      "format": "jpeg",
+      "quality": 95,
+      "filters": [],
+      "priority": 3,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_042",
+      "image_url": "https://picsum.photos/id/901/3840/2160",
+      "original_width": 3840,
+      "original_height": 2160,
+      "target_width": 200,
+      "target_height": 150,
+      "format": "jpeg",
+      "quality": 85,
+      "filters": [],
+      "priority": 3,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_043",
+      "image_url": "https://picsum.photos/id/627/3840/2160",
+      "original_width": 3840,
+      "original_height": 2160,
+      "target_width": 1280,
+      "target_height": 720,
+      "format": "webp",
+      "quality": 95,
+      "filters": [
+        "sharpen",
+        "sepia"
+      ],
+      "priority": 1,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_044",
+      "image_url": "https://picsum.photos/id/912/3840/2160",
+      "original_width": 3840,
+      "original_height": 2160,
+      "target_width": 200,
+      "target_height": 150,
+      "format": "jpeg",
+      "quality": 95,
+      "filters": [],
+      "priority": 2,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_045",
+      "image_url": "https://picsum.photos/id/735/1280/720",
+      "original_width": 1280,
+      "original_height": 720,
+      "target_width": 200,
+      "target_height": 150,
+      "format": "png",
+      "quality": 80,
+      "filters": [
+        "sepia"
+      ],
+      "priority": 5,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_046",
+      "image_url": "https://picsum.photos/id/95/2560/1440",
+      "original_width": 2560,
+      "original_height": 1440,
+      "target_width": 200,
+      "target_height": 150,
+      "format": "webp",
+      "quality": 90,
+      "filters": [],
+      "priority": 3,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_047",
+      "image_url": "https://picsum.photos/id/790/1920/1080",
+      "original_width": 1920,
+      "original_height": 1080,
+      "target_width": 800,
+      "target_height": 600,
+      "format": "jpeg",
+      "quality": 85,
+      "filters": [
+        "blur",
+        "grayscale"
+      ],
+      "priority": 5,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_048",
+      "image_url": "https://picsum.photos/id/115/2560/1440",
+      "original_width": 2560,
+      "original_height": 1440,
+      "target_width": 640,
+      "target_height": 480,
+      "format": "jpeg",
+      "quality": 80,
+      "filters": [],
+      "priority": 5,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_049",
+      "image_url": "https://picsum.photos/id/441/1920/1080",
+      "original_width": 1920,
+      "original_height": 1080,
+      "target_width": 200,
+      "target_height": 150,
+      "format": "jpeg",
+      "quality": 75,
+      "filters": [
+        "sepia"
+      ],
+      "priority": 3,
+      "callback_queue": "image-result-queue"
+    },
+    {
+      "task_id": "img_task_050",
+      "image_url": "https://picsum.photos/id/699/1920/1080",
+      "original_width": 1920,
+      "original_height": 1080,
+      "target_width": 200,
+      "target_height": 150,
+      "format": "jpeg",
+      "quality": 75,
+      "filters": [
+        "sepia"
+      ],
+      "priority": 5,
+      "callback_queue": "image-result-queue"
+    }
+  ]
+}

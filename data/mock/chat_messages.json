@@ -1,0 +1,2092 @@
+{
+  "rooms": [
+    {
+      "room_id": "room_001",
+      "name": "개발자 모임방",
+      "members": [
+        {
+          "user_id": "user_001",
+          "nickname": "코딩마스터"
+        },
+        {
+          "user_id": "user_002",
+          "nickname": "개발새발"
+        },
+        {
+          "user_id": "user_003",
+          "nickname": "버그킬러"
+        },
+        {
+          "user_id": "user_004",
+          "nickname": "커피중독자"
+        },
+        {
+          "user_id": "user_005",
+          "nickname": "야근전사"
+        }
+      ]
+    },
+    {
+      "room_id": "room_002",
+      "name": "맛집 추천방",
+      "members": [
+        {
+          "user_id": "user_006",
+          "nickname": "리팩토링왕"
+        },
+        {
+          "user_id": "user_007",
+          "nickname": "주니어코더"
+        },
+        {
+          "user_id": "user_008",
+          "nickname": "맛집헌터"
+        },
+        {
+          "user_id": "user_009",
+          "nickname": "야식의신"
+        },
+        {
+          "user_id": "user_010",
+          "nickname": "미식가"
+        }
+      ]
+    },
+    {
+      "room_id": "room_003",
+      "name": "여행 동호회",
+      "members": [
+        {
+          "user_id": "user_011",
+          "nickname": "먹방러버"
+        },
+        {
+          "user_id": "user_012",
+          "nickname": "배고픈하마"
+        },
+        {
+          "user_id": "user_013",
+          "nickname": "라면왕"
+        },
+        {
+          "user_id": "user_014",
+          "nickname": "치킨광"
+        },
+        {
+          "user_id": "user_015",
+          "nickname": "디저트요정"
+        },
+        {
+          "user_id": "user_016",
+          "nickname": "여행가자"
+        },
+        {
+          "user_id": "user_017",
+          "nickname": "산책러"
+        }
+      ]
+    }
+  ],
+  "messages": [
+    {
+      "message_id": "msg_0001",
+      "room_id": "room_001",
+      "sender_id": "user_002",
+      "sender_nickname": "개발새발",
+      "content": "오늘 점심 뭐 먹을까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:00:00+00:00"
+    },
+    {
+      "message_id": "msg_0002",
+      "room_id": "room_001",
+      "sender_id": "user_005",
+      "sender_nickname": "야근전사",
+      "content": "다들 뭐하고 계세요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:00:19+00:00"
+    },
+    {
+      "message_id": "msg_0003",
+      "room_id": "room_002",
+      "sender_id": "user_006",
+      "sender_nickname": "리팩토링왕",
+      "content": "안녕하세요! 오늘 날씨 좋네요 ☀️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:00:06+00:00"
+    },
+    {
+      "message_id": "msg_0004",
+      "room_id": "room_001",
+      "sender_id": "user_002",
+      "sender_nickname": "개발새발",
+      "content": "감사합니다 🙏",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:01:00+00:00"
+    },
+    {
+      "message_id": "msg_0005",
+      "room_id": "room_001",
+      "sender_id": "user_005",
+      "sender_nickname": "야근전사",
+      "content": "이거 한번 봐보세요!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:01:32+00:00"
+    },
+    {
+      "message_id": "msg_0006",
+      "room_id": "room_003",
+      "sender_id": "user_016",
+      "sender_nickname": "여행가자",
+      "content": "감사합니다 🙏",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:01:10+00:00"
+    },
+    {
+      "message_id": "msg_0007",
+      "room_id": "room_001",
+      "sender_id": "user_004",
+      "sender_nickname": "커피중독자",
+      "content": "주말에 같이 갈까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:00:54+00:00"
+    },
+    {
+      "message_id": "msg_0008",
+      "room_id": "room_001",
+      "sender_id": "user_002",
+      "sender_nickname": "개발새발",
+      "content": "@야근전사 확인 부탁드립니다",
+      "has_mention": true,
+      "mention_user_id": "user_005",
+      "timestamp": "2024-01-15T09:01:17+00:00"
+    },
+    {
+      "message_id": "msg_0009",
+      "room_id": "room_002",
+      "sender_id": "user_007",
+      "sender_nickname": "주니어코더",
+      "content": "이거 한번 봐보세요!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:03:20+00:00"
+    },
+    {
+      "message_id": "msg_0010",
+      "room_id": "room_002",
+      "sender_id": "user_006",
+      "sender_nickname": "리팩토링왕",
+      "content": "다들 뭐하고 계세요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:01:57+00:00"
+    },
+    {
+      "message_id": "msg_0011",
+      "room_id": "room_001",
+      "sender_id": "user_003",
+      "sender_nickname": "버그킬러",
+      "content": "퇴근했습니다 ✌️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:02:00+00:00"
+    },
+    {
+      "message_id": "msg_0012",
+      "room_id": "room_003",
+      "sender_id": "user_013",
+      "sender_nickname": "라면왕",
+      "content": "좋은 아침이에요~",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:00:22+00:00"
+    },
+    {
+      "message_id": "msg_0013",
+      "room_id": "room_003",
+      "sender_id": "user_014",
+      "sender_nickname": "치킨광",
+      "content": "감사합니다 🙏",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:00:48+00:00"
+    },
+    {
+      "message_id": "msg_0014",
+      "room_id": "room_002",
+      "sender_id": "user_006",
+      "sender_nickname": "리팩토링왕",
+      "content": "감사합니다 🙏",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:02:10+00:00"
+    },
+    {
+      "message_id": "msg_0015",
+      "room_id": "room_003",
+      "sender_id": "user_015",
+      "sender_nickname": "디저트요정",
+      "content": "맛있겠다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:06:32+00:00"
+    },
+    {
+      "message_id": "msg_0016",
+      "room_id": "room_002",
+      "sender_id": "user_010",
+      "sender_nickname": "미식가",
+      "content": "이거 한번 봐보세요!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:05:45+00:00"
+    },
+    {
+      "message_id": "msg_0017",
+      "room_id": "room_001",
+      "sender_id": "user_001",
+      "sender_nickname": "코딩마스터",
+      "content": "이번 프로젝트 화이팅!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:02:08+00:00"
+    },
+    {
+      "message_id": "msg_0018",
+      "room_id": "room_002",
+      "sender_id": "user_006",
+      "sender_nickname": "리팩토링왕",
+      "content": "퇴근했습니다 ✌️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:02:16+00:00"
+    },
+    {
+      "message_id": "msg_0019",
+      "room_id": "room_001",
+      "sender_id": "user_004",
+      "sender_nickname": "커피중독자",
+      "content": "@야근전사 님 이거 어떻게 생각하세요?",
+      "has_mention": true,
+      "mention_user_id": "user_005",
+      "timestamp": "2024-01-15T09:06:18+00:00"
+    },
+    {
+      "message_id": "msg_0020",
+      "room_id": "room_002",
+      "sender_id": "user_007",
+      "sender_nickname": "주니어코더",
+      "content": "ㅋㅋㅋ 대박",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:03:48+00:00"
+    },
+    {
+      "message_id": "msg_0021",
+      "room_id": "room_001",
+      "sender_id": "user_003",
+      "sender_nickname": "버그킬러",
+      "content": "@코딩마스터 확인 부탁드립니다",
+      "has_mention": true,
+      "mention_user_id": "user_001",
+      "timestamp": "2024-01-15T09:06:40+00:00"
+    },
+    {
+      "message_id": "msg_0022",
+      "room_id": "room_003",
+      "sender_id": "user_012",
+      "sender_nickname": "배고픈하마",
+      "content": "감사합니다 🙏",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:08:24+00:00"
+    },
+    {
+      "message_id": "msg_0023",
+      "room_id": "room_001",
+      "sender_id": "user_002",
+      "sender_nickname": "개발새발",
+      "content": "오늘 회의 몇 시죠?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:04:46+00:00"
+    },
+    {
+      "message_id": "msg_0024",
+      "room_id": "room_002",
+      "sender_id": "user_010",
+      "sender_nickname": "미식가",
+      "content": "이거 한번 봐보세요!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:08:26+00:00"
+    },
+    {
+      "message_id": "msg_0025",
+      "room_id": "room_002",
+      "sender_id": "user_006",
+      "sender_nickname": "리팩토링왕",
+      "content": "이거 한번 봐보세요!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:10:48+00:00"
+    },
+    {
+      "message_id": "msg_0026",
+      "room_id": "room_001",
+      "sender_id": "user_003",
+      "sender_nickname": "버그킬러",
+      "content": "저도 동의합니다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:03:45+00:00"
+    },
+    {
+      "message_id": "msg_0027",
+      "room_id": "room_001",
+      "sender_id": "user_002",
+      "sender_nickname": "개발새발",
+      "content": "맛있겠다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:08:14+00:00"
+    },
+    {
+      "message_id": "msg_0028",
+      "room_id": "room_003",
+      "sender_id": "user_013",
+      "sender_nickname": "라면왕",
+      "content": "이거 한번 봐보세요!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:09:27+00:00"
+    },
+    {
+      "message_id": "msg_0029",
+      "room_id": "room_002",
+      "sender_id": "user_009",
+      "sender_nickname": "야식의신",
+      "content": "맛있겠다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:14:00+00:00"
+    },
+    {
+      "message_id": "msg_0030",
+      "room_id": "room_003",
+      "sender_id": "user_014",
+      "sender_nickname": "치킨광",
+      "content": "오늘 점심 뭐 먹을까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:04:21+00:00"
+    },
+    {
+      "message_id": "msg_0031",
+      "room_id": "room_001",
+      "sender_id": "user_002",
+      "sender_nickname": "개발새발",
+      "content": "@커피중독자 확인 부탁드립니다",
+      "has_mention": true,
+      "mention_user_id": "user_004",
+      "timestamp": "2024-01-15T09:12:00+00:00"
+    },
+    {
+      "message_id": "msg_0032",
+      "room_id": "room_003",
+      "sender_id": "user_014",
+      "sender_nickname": "치킨광",
+      "content": "맛있겠다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:09:49+00:00"
+    },
+    {
+      "message_id": "msg_0033",
+      "room_id": "room_002",
+      "sender_id": "user_008",
+      "sender_nickname": "맛집헌터",
+      "content": "이거 한번 봐보세요!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:02:40+00:00"
+    },
+    {
+      "message_id": "msg_0034",
+      "room_id": "room_003",
+      "sender_id": "user_014",
+      "sender_nickname": "치킨광",
+      "content": "다들 뭐하고 계세요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:13:45+00:00"
+    },
+    {
+      "message_id": "msg_0035",
+      "room_id": "room_001",
+      "sender_id": "user_001",
+      "sender_nickname": "코딩마스터",
+      "content": "오늘 점심 뭐 먹을까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:11:54+00:00"
+    },
+    {
+      "message_id": "msg_0036",
+      "room_id": "room_001",
+      "sender_id": "user_004",
+      "sender_nickname": "커피중독자",
+      "content": "주말에 같이 갈까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:01:45+00:00"
+    },
+    {
+      "message_id": "msg_0037",
+      "room_id": "room_002",
+      "sender_id": "user_009",
+      "sender_nickname": "야식의신",
+      "content": "주말에 같이 갈까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:09:00+00:00"
+    },
+    {
+      "message_id": "msg_0038",
+      "room_id": "room_003",
+      "sender_id": "user_013",
+      "sender_nickname": "라면왕",
+      "content": "감사합니다 🙏",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:17:16+00:00"
+    },
+    {
+      "message_id": "msg_0039",
+      "room_id": "room_001",
+      "sender_id": "user_001",
+      "sender_nickname": "코딩마스터",
+      "content": "이번 프로젝트 화이팅!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:18:22+00:00"
+    },
+    {
+      "message_id": "msg_0040",
+      "room_id": "room_003",
+      "sender_id": "user_017",
+      "sender_nickname": "산책러",
+      "content": "@여행가자 님 이거 어떻게 생각하세요?",
+      "has_mention": true,
+      "mention_user_id": "user_016",
+      "timestamp": "2024-01-15T09:07:09+00:00"
+    },
+    {
+      "message_id": "msg_0041",
+      "room_id": "room_001",
+      "sender_id": "user_003",
+      "sender_nickname": "버그킬러",
+      "content": "저도 동의합니다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:04:00+00:00"
+    },
+    {
+      "message_id": "msg_0042",
+      "room_id": "room_002",
+      "sender_id": "user_006",
+      "sender_nickname": "리팩토링왕",
+      "content": "@야식의신 확인 부탁드립니다",
+      "has_mention": true,
+      "mention_user_id": "user_009",
+      "timestamp": "2024-01-15T09:11:37+00:00"
+    },
+    {
+      "message_id": "msg_0043",
+      "room_id": "room_001",
+      "sender_id": "user_005",
+      "sender_nickname": "야근전사",
+      "content": "맛있겠다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:02:48+00:00"
+    },
+    {
+      "message_id": "msg_0044",
+      "room_id": "room_003",
+      "sender_id": "user_013",
+      "sender_nickname": "라면왕",
+      "content": "퇴근했습니다 ✌️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:15:03+00:00"
+    },
+    {
+      "message_id": "msg_0045",
+      "room_id": "room_003",
+      "sender_id": "user_015",
+      "sender_nickname": "디저트요정",
+      "content": "이거 한번 봐보세요!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:03:40+00:00"
+    },
+    {
+      "message_id": "msg_0046",
+      "room_id": "room_002",
+      "sender_id": "user_007",
+      "sender_nickname": "주니어코더",
+      "content": "감사합니다 🙏",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:18:45+00:00"
+    },
+    {
+      "message_id": "msg_0047",
+      "room_id": "room_003",
+      "sender_id": "user_011",
+      "sender_nickname": "먹방러버",
+      "content": "주말에 같이 갈까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:08:26+00:00"
+    },
+    {
+      "message_id": "msg_0048",
+      "room_id": "room_002",
+      "sender_id": "user_006",
+      "sender_nickname": "리팩토링왕",
+      "content": "다들 뭐하고 계세요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:23:30+00:00"
+    },
+    {
+      "message_id": "msg_0049",
+      "room_id": "room_002",
+      "sender_id": "user_008",
+      "sender_nickname": "맛집헌터",
+      "content": "이거 한번 봐보세요!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:01:36+00:00"
+    },
+    {
+      "message_id": "msg_0050",
+      "room_id": "room_001",
+      "sender_id": "user_005",
+      "sender_nickname": "야근전사",
+      "content": "다들 뭐하고 계세요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:02:27+00:00"
+    },
+    {
+      "message_id": "msg_0051",
+      "room_id": "room_003",
+      "sender_id": "user_014",
+      "sender_nickname": "치킨광",
+      "content": "퇴근했습니다 ✌️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:02:30+00:00"
+    },
+    {
+      "message_id": "msg_0052",
+      "room_id": "room_003",
+      "sender_id": "user_017",
+      "sender_nickname": "산책러",
+      "content": "오늘 점심 뭐 먹을까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:04:15+00:00"
+    },
+    {
+      "message_id": "msg_0053",
+      "room_id": "room_003",
+      "sender_id": "user_014",
+      "sender_nickname": "치킨광",
+      "content": "감사합니다 🙏",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:05:12+00:00"
+    },
+    {
+      "message_id": "msg_0054",
+      "room_id": "room_002",
+      "sender_id": "user_010",
+      "sender_nickname": "미식가",
+      "content": "퇴근했습니다 ✌️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:17:40+00:00"
+    },
+    {
+      "message_id": "msg_0055",
+      "room_id": "room_002",
+      "sender_id": "user_007",
+      "sender_nickname": "주니어코더",
+      "content": "맛있겠다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:16:12+00:00"
+    },
+    {
+      "message_id": "msg_0056",
+      "room_id": "room_003",
+      "sender_id": "user_016",
+      "sender_nickname": "여행가자",
+      "content": "이거 한번 봐보세요!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:21:05+00:00"
+    },
+    {
+      "message_id": "msg_0057",
+      "room_id": "room_002",
+      "sender_id": "user_009",
+      "sender_nickname": "야식의신",
+      "content": "이번 프로젝트 화이팅!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:19:36+00:00"
+    },
+    {
+      "message_id": "msg_0058",
+      "room_id": "room_002",
+      "sender_id": "user_009",
+      "sender_nickname": "야식의신",
+      "content": "맛있겠다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:16:09+00:00"
+    },
+    {
+      "message_id": "msg_0059",
+      "room_id": "room_002",
+      "sender_id": "user_006",
+      "sender_nickname": "리팩토링왕",
+      "content": "이거 한번 봐보세요!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:07:44+00:00"
+    },
+    {
+      "message_id": "msg_0060",
+      "room_id": "room_001",
+      "sender_id": "user_003",
+      "sender_nickname": "버그킬러",
+      "content": "안녕하세요! 오늘 날씨 좋네요 ☀️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:18:41+00:00"
+    },
+    {
+      "message_id": "msg_0061",
+      "room_id": "room_003",
+      "sender_id": "user_012",
+      "sender_nickname": "배고픈하마",
+      "content": "주말에 같이 갈까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:08:00+00:00"
+    },
+    {
+      "message_id": "msg_0062",
+      "room_id": "room_001",
+      "sender_id": "user_001",
+      "sender_nickname": "코딩마스터",
+      "content": "@개발새발 확인 부탁드립니다",
+      "has_mention": true,
+      "mention_user_id": "user_002",
+      "timestamp": "2024-01-15T09:08:08+00:00"
+    },
+    {
+      "message_id": "msg_0063",
+      "room_id": "room_001",
+      "sender_id": "user_001",
+      "sender_nickname": "코딩마스터",
+      "content": "퇴근했습니다 ✌️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:11:22+00:00"
+    },
+    {
+      "message_id": "msg_0064",
+      "room_id": "room_001",
+      "sender_id": "user_005",
+      "sender_nickname": "야근전사",
+      "content": "이거 한번 봐보세요!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:09:27+00:00"
+    },
+    {
+      "message_id": "msg_0065",
+      "room_id": "room_003",
+      "sender_id": "user_014",
+      "sender_nickname": "치킨광",
+      "content": "이거 한번 봐보세요!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:19:12+00:00"
+    },
+    {
+      "message_id": "msg_0066",
+      "room_id": "room_001",
+      "sender_id": "user_005",
+      "sender_nickname": "야근전사",
+      "content": "주말에 같이 갈까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:17:20+00:00"
+    },
+    {
+      "message_id": "msg_0067",
+      "room_id": "room_001",
+      "sender_id": "user_004",
+      "sender_nickname": "커피중독자",
+      "content": "좋은 아침이에요~",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:15:24+00:00"
+    },
+    {
+      "message_id": "msg_0068",
+      "room_id": "room_001",
+      "sender_id": "user_001",
+      "sender_nickname": "코딩마스터",
+      "content": "다들 뭐하고 계세요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:24:34+00:00"
+    },
+    {
+      "message_id": "msg_0069",
+      "room_id": "room_002",
+      "sender_id": "user_008",
+      "sender_nickname": "맛집헌터",
+      "content": "저도 동의합니다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:15:52+00:00"
+    },
+    {
+      "message_id": "msg_0070",
+      "room_id": "room_002",
+      "sender_id": "user_006",
+      "sender_nickname": "리팩토링왕",
+      "content": "이번 프로젝트 화이팅!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:24:09+00:00"
+    },
+    {
+      "message_id": "msg_0071",
+      "room_id": "room_003",
+      "sender_id": "user_011",
+      "sender_nickname": "먹방러버",
+      "content": "안녕하세요! 오늘 날씨 좋네요 ☀️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:15:10+00:00"
+    },
+    {
+      "message_id": "msg_0072",
+      "room_id": "room_003",
+      "sender_id": "user_013",
+      "sender_nickname": "라면왕",
+      "content": "좋은 아침이에요~",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:33:08+00:00"
+    },
+    {
+      "message_id": "msg_0073",
+      "room_id": "room_001",
+      "sender_id": "user_002",
+      "sender_nickname": "개발새발",
+      "content": "이거 한번 봐보세요!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:08:24+00:00"
+    },
+    {
+      "message_id": "msg_0074",
+      "room_id": "room_003",
+      "sender_id": "user_014",
+      "sender_nickname": "치킨광",
+      "content": "오늘 점심 뭐 먹을까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:17:02+00:00"
+    },
+    {
+      "message_id": "msg_0075",
+      "room_id": "room_001",
+      "sender_id": "user_003",
+      "sender_nickname": "버그킬러",
+      "content": "오늘 회의 몇 시죠?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:09:52+00:00"
+    },
+    {
+      "message_id": "msg_0076",
+      "room_id": "room_001",
+      "sender_id": "user_004",
+      "sender_nickname": "커피중독자",
+      "content": "좋은 아침이에요~",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:35:00+00:00"
+    },
+    {
+      "message_id": "msg_0077",
+      "room_id": "room_003",
+      "sender_id": "user_011",
+      "sender_nickname": "먹방러버",
+      "content": "안녕하세요! 오늘 날씨 좋네요 ☀️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:26:36+00:00"
+    },
+    {
+      "message_id": "msg_0078",
+      "room_id": "room_003",
+      "sender_id": "user_017",
+      "sender_nickname": "산책러",
+      "content": "안녕하세요! 오늘 날씨 좋네요 ☀️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:03:51+00:00"
+    },
+    {
+      "message_id": "msg_0079",
+      "room_id": "room_001",
+      "sender_id": "user_002",
+      "sender_nickname": "개발새발",
+      "content": "저도 동의합니다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:20:48+00:00"
+    },
+    {
+      "message_id": "msg_0080",
+      "room_id": "room_002",
+      "sender_id": "user_007",
+      "sender_nickname": "주니어코더",
+      "content": "퇴근했습니다 ✌️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:17:07+00:00"
+    },
+    {
+      "message_id": "msg_0081",
+      "room_id": "room_001",
+      "sender_id": "user_002",
+      "sender_nickname": "개발새발",
+      "content": "저도 동의합니다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:01:20+00:00"
+    },
+    {
+      "message_id": "msg_0082",
+      "room_id": "room_002",
+      "sender_id": "user_008",
+      "sender_nickname": "맛집헌터",
+      "content": "맛있겠다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:35:06+00:00"
+    },
+    {
+      "message_id": "msg_0083",
+      "room_id": "room_002",
+      "sender_id": "user_008",
+      "sender_nickname": "맛집헌터",
+      "content": "저도 동의합니다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:31:26+00:00"
+    },
+    {
+      "message_id": "msg_0084",
+      "room_id": "room_003",
+      "sender_id": "user_017",
+      "sender_nickname": "산책러",
+      "content": "감사합니다 🙏",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:30:26+00:00"
+    },
+    {
+      "message_id": "msg_0085",
+      "room_id": "room_003",
+      "sender_id": "user_014",
+      "sender_nickname": "치킨광",
+      "content": "오늘 점심 뭐 먹을까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:09:48+00:00"
+    },
+    {
+      "message_id": "msg_0086",
+      "room_id": "room_002",
+      "sender_id": "user_007",
+      "sender_nickname": "주니어코더",
+      "content": "안녕하세요! 오늘 날씨 좋네요 ☀️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:26:55+00:00"
+    },
+    {
+      "message_id": "msg_0087",
+      "room_id": "room_003",
+      "sender_id": "user_015",
+      "sender_nickname": "디저트요정",
+      "content": "안녕하세요! 오늘 날씨 좋네요 ☀️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:34:24+00:00"
+    },
+    {
+      "message_id": "msg_0088",
+      "room_id": "room_002",
+      "sender_id": "user_006",
+      "sender_nickname": "리팩토링왕",
+      "content": "안녕하세요! 오늘 날씨 좋네요 ☀️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:27:33+00:00"
+    },
+    {
+      "message_id": "msg_0089",
+      "room_id": "room_002",
+      "sender_id": "user_010",
+      "sender_nickname": "미식가",
+      "content": "맛있겠다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:41:04+00:00"
+    },
+    {
+      "message_id": "msg_0090",
+      "room_id": "room_003",
+      "sender_id": "user_012",
+      "sender_nickname": "배고픈하마",
+      "content": "안녕하세요! 오늘 날씨 좋네요 ☀️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:25:13+00:00"
+    },
+    {
+      "message_id": "msg_0091",
+      "room_id": "room_001",
+      "sender_id": "user_002",
+      "sender_nickname": "개발새발",
+      "content": "다들 뭐하고 계세요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:30:00+00:00"
+    },
+    {
+      "message_id": "msg_0092",
+      "room_id": "room_001",
+      "sender_id": "user_002",
+      "sender_nickname": "개발새발",
+      "content": "저도 동의합니다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:06:04+00:00"
+    },
+    {
+      "message_id": "msg_0093",
+      "room_id": "room_003",
+      "sender_id": "user_012",
+      "sender_nickname": "배고픈하마",
+      "content": "주말에 같이 갈까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:30:40+00:00"
+    },
+    {
+      "message_id": "msg_0094",
+      "room_id": "room_001",
+      "sender_id": "user_005",
+      "sender_nickname": "야근전사",
+      "content": "다들 뭐하고 계세요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:21:42+00:00"
+    },
+    {
+      "message_id": "msg_0095",
+      "room_id": "room_003",
+      "sender_id": "user_015",
+      "sender_nickname": "디저트요정",
+      "content": "주말에 같이 갈까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:26:38+00:00"
+    },
+    {
+      "message_id": "msg_0096",
+      "room_id": "room_002",
+      "sender_id": "user_008",
+      "sender_nickname": "맛집헌터",
+      "content": "이거 한번 봐보세요!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:34:50+00:00"
+    },
+    {
+      "message_id": "msg_0097",
+      "room_id": "room_003",
+      "sender_id": "user_013",
+      "sender_nickname": "라면왕",
+      "content": "이거 한번 봐보세요!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:14:24+00:00"
+    },
+    {
+      "message_id": "msg_0098",
+      "room_id": "room_002",
+      "sender_id": "user_007",
+      "sender_nickname": "주니어코더",
+      "content": "이번 프로젝트 화이팅!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:33:57+00:00"
+    },
+    {
+      "message_id": "msg_0099",
+      "room_id": "room_002",
+      "sender_id": "user_009",
+      "sender_nickname": "야식의신",
+      "content": "ㅋㅋㅋ 대박",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:49:00+00:00"
+    },
+    {
+      "message_id": "msg_0100",
+      "room_id": "room_001",
+      "sender_id": "user_001",
+      "sender_nickname": "코딩마스터",
+      "content": "오늘 회의 몇 시죠?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:33:00+00:00"
+    },
+    {
+      "message_id": "msg_0101",
+      "room_id": "room_003",
+      "sender_id": "user_011",
+      "sender_nickname": "먹방러버",
+      "content": "다들 뭐하고 계세요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:30:00+00:00"
+    },
+    {
+      "message_id": "msg_0102",
+      "room_id": "room_001",
+      "sender_id": "user_005",
+      "sender_nickname": "야근전사",
+      "content": "@개발새발 님 이거 어떻게 생각하세요?",
+      "has_mention": true,
+      "mention_user_id": "user_002",
+      "timestamp": "2024-01-15T09:50:30+00:00"
+    },
+    {
+      "message_id": "msg_0103",
+      "room_id": "room_002",
+      "sender_id": "user_006",
+      "sender_nickname": "리팩토링왕",
+      "content": "맛있겠다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:13:36+00:00"
+    },
+    {
+      "message_id": "msg_0104",
+      "room_id": "room_002",
+      "sender_id": "user_008",
+      "sender_nickname": "맛집헌터",
+      "content": "오늘 점심 뭐 먹을까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:25:45+00:00"
+    },
+    {
+      "message_id": "msg_0105",
+      "room_id": "room_003",
+      "sender_id": "user_016",
+      "sender_nickname": "여행가자",
+      "content": "@디저트요정 님 이거 어떻게 생각하세요?",
+      "has_mention": true,
+      "mention_user_id": "user_015",
+      "timestamp": "2024-01-15T09:45:04+00:00"
+    },
+    {
+      "message_id": "msg_0106",
+      "room_id": "room_003",
+      "sender_id": "user_015",
+      "sender_nickname": "디저트요정",
+      "content": "안녕하세요! 오늘 날씨 좋네요 ☀️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:38:30+00:00"
+    },
+    {
+      "message_id": "msg_0107",
+      "room_id": "room_003",
+      "sender_id": "user_013",
+      "sender_nickname": "라면왕",
+      "content": "맛있겠다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:38:52+00:00"
+    },
+    {
+      "message_id": "msg_0108",
+      "room_id": "room_001",
+      "sender_id": "user_002",
+      "sender_nickname": "개발새발",
+      "content": "@코딩마스터 님 이거 어떻게 생각하세요?",
+      "has_mention": true,
+      "mention_user_id": "user_001",
+      "timestamp": "2024-01-15T09:51:43+00:00"
+    },
+    {
+      "message_id": "msg_0109",
+      "room_id": "room_001",
+      "sender_id": "user_005",
+      "sender_nickname": "야근전사",
+      "content": "오늘 점심 뭐 먹을까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:16:12+00:00"
+    },
+    {
+      "message_id": "msg_0110",
+      "room_id": "room_002",
+      "sender_id": "user_010",
+      "sender_nickname": "미식가",
+      "content": "이거 한번 봐보세요!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:41:47+00:00"
+    },
+    {
+      "message_id": "msg_0111",
+      "room_id": "room_002",
+      "sender_id": "user_007",
+      "sender_nickname": "주니어코더",
+      "content": "이번 프로젝트 화이팅!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:38:30+00:00"
+    },
+    {
+      "message_id": "msg_0112",
+      "room_id": "room_002",
+      "sender_id": "user_010",
+      "sender_nickname": "미식가",
+      "content": "오늘 회의 몇 시죠?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:16:39+00:00"
+    },
+    {
+      "message_id": "msg_0113",
+      "room_id": "room_001",
+      "sender_id": "user_001",
+      "sender_nickname": "코딩마스터",
+      "content": "이번 프로젝트 화이팅!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:26:08+00:00"
+    },
+    {
+      "message_id": "msg_0114",
+      "room_id": "room_002",
+      "sender_id": "user_006",
+      "sender_nickname": "리팩토링왕",
+      "content": "안녕하세요! 오늘 날씨 좋네요 ☀️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:20:43+00:00"
+    },
+    {
+      "message_id": "msg_0115",
+      "room_id": "room_001",
+      "sender_id": "user_003",
+      "sender_nickname": "버그킬러",
+      "content": "오늘 점심 뭐 먹을까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:45:36+00:00"
+    },
+    {
+      "message_id": "msg_0116",
+      "room_id": "room_002",
+      "sender_id": "user_010",
+      "sender_nickname": "미식가",
+      "content": "@야식의신 확인 부탁드립니다",
+      "has_mention": true,
+      "mention_user_id": "user_009",
+      "timestamp": "2024-01-15T09:34:30+00:00"
+    },
+    {
+      "message_id": "msg_0117",
+      "room_id": "room_001",
+      "sender_id": "user_001",
+      "sender_nickname": "코딩마스터",
+      "content": "다들 뭐하고 계세요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:56:04+00:00"
+    },
+    {
+      "message_id": "msg_0118",
+      "room_id": "room_003",
+      "sender_id": "user_012",
+      "sender_nickname": "배고픈하마",
+      "content": "감사합니다 🙏",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:03:54+00:00"
+    },
+    {
+      "message_id": "msg_0119",
+      "room_id": "room_002",
+      "sender_id": "user_010",
+      "sender_nickname": "미식가",
+      "content": "감사합니다 🙏",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:09:50+00:00"
+    },
+    {
+      "message_id": "msg_0120",
+      "room_id": "room_002",
+      "sender_id": "user_007",
+      "sender_nickname": "주니어코더",
+      "content": "안녕하세요! 오늘 날씨 좋네요 ☀️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:19:50+00:00"
+    },
+    {
+      "message_id": "msg_0121",
+      "room_id": "room_002",
+      "sender_id": "user_006",
+      "sender_nickname": "리팩토링왕",
+      "content": "맛있겠다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:24:00+00:00"
+    },
+    {
+      "message_id": "msg_0122",
+      "room_id": "room_001",
+      "sender_id": "user_002",
+      "sender_nickname": "개발새발",
+      "content": "이번 프로젝트 화이팅!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:08:04+00:00"
+    },
+    {
+      "message_id": "msg_0123",
+      "room_id": "room_002",
+      "sender_id": "user_010",
+      "sender_nickname": "미식가",
+      "content": "맛있겠다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:56:56+00:00"
+    },
+    {
+      "message_id": "msg_0124",
+      "room_id": "room_002",
+      "sender_id": "user_010",
+      "sender_nickname": "미식가",
+      "content": "@주니어코더 확인 부탁드립니다",
+      "has_mention": true,
+      "mention_user_id": "user_007",
+      "timestamp": "2024-01-15T10:01:30+00:00"
+    },
+    {
+      "message_id": "msg_0125",
+      "room_id": "room_001",
+      "sender_id": "user_002",
+      "sender_nickname": "개발새발",
+      "content": "좋은 아침이에요~",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:53:44+00:00"
+    },
+    {
+      "message_id": "msg_0126",
+      "room_id": "room_001",
+      "sender_id": "user_004",
+      "sender_nickname": "커피중독자",
+      "content": "안녕하세요! 오늘 날씨 좋네요 ☀️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:12:30+00:00"
+    },
+    {
+      "message_id": "msg_0127",
+      "room_id": "room_003",
+      "sender_id": "user_013",
+      "sender_nickname": "라면왕",
+      "content": "좋은 아침이에요~",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:03:00+00:00"
+    },
+    {
+      "message_id": "msg_0128",
+      "room_id": "room_002",
+      "sender_id": "user_007",
+      "sender_nickname": "주니어코더",
+      "content": "@맛집헌터 님 이거 어떻게 생각하세요?",
+      "has_mention": true,
+      "mention_user_id": "user_008",
+      "timestamp": "2024-01-15T09:55:02+00:00"
+    },
+    {
+      "message_id": "msg_0129",
+      "room_id": "room_003",
+      "sender_id": "user_011",
+      "sender_nickname": "먹방러버",
+      "content": "저도 동의합니다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:59:44+00:00"
+    },
+    {
+      "message_id": "msg_0130",
+      "room_id": "room_001",
+      "sender_id": "user_004",
+      "sender_nickname": "커피중독자",
+      "content": "이거 한번 봐보세요!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:15:03+00:00"
+    },
+    {
+      "message_id": "msg_0131",
+      "room_id": "room_002",
+      "sender_id": "user_008",
+      "sender_nickname": "맛집헌터",
+      "content": "@주니어코더 님 이거 어떻게 생각하세요?",
+      "has_mention": true,
+      "mention_user_id": "user_007",
+      "timestamp": "2024-01-15T09:17:20+00:00"
+    },
+    {
+      "message_id": "msg_0132",
+      "room_id": "room_001",
+      "sender_id": "user_002",
+      "sender_nickname": "개발새발",
+      "content": "저도 동의합니다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:24:01+00:00"
+    },
+    {
+      "message_id": "msg_0133",
+      "room_id": "room_002",
+      "sender_id": "user_006",
+      "sender_nickname": "리팩토링왕",
+      "content": "좋은 아침이에요~",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:19:48+00:00"
+    },
+    {
+      "message_id": "msg_0134",
+      "room_id": "room_002",
+      "sender_id": "user_010",
+      "sender_nickname": "미식가",
+      "content": "저도 동의합니다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:48:46+00:00"
+    },
+    {
+      "message_id": "msg_0135",
+      "room_id": "room_003",
+      "sender_id": "user_013",
+      "sender_nickname": "라면왕",
+      "content": "안녕하세요! 오늘 날씨 좋네요 ☀️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:08:56+00:00"
+    },
+    {
+      "message_id": "msg_0136",
+      "room_id": "room_002",
+      "sender_id": "user_007",
+      "sender_nickname": "주니어코더",
+      "content": "주말에 같이 갈까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:20:15+00:00"
+    },
+    {
+      "message_id": "msg_0137",
+      "room_id": "room_001",
+      "sender_id": "user_001",
+      "sender_nickname": "코딩마스터",
+      "content": "주말에 같이 갈까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:31:44+00:00"
+    },
+    {
+      "message_id": "msg_0138",
+      "room_id": "room_002",
+      "sender_id": "user_008",
+      "sender_nickname": "맛집헌터",
+      "content": "저도 동의합니다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:45:40+00:00"
+    },
+    {
+      "message_id": "msg_0139",
+      "room_id": "room_003",
+      "sender_id": "user_011",
+      "sender_nickname": "먹방러버",
+      "content": "저도 동의합니다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:06:42+00:00"
+    },
+    {
+      "message_id": "msg_0140",
+      "room_id": "room_003",
+      "sender_id": "user_012",
+      "sender_nickname": "배고픈하마",
+      "content": "@먹방러버 님 이거 어떻게 생각하세요?",
+      "has_mention": true,
+      "mention_user_id": "user_011",
+      "timestamp": "2024-01-15T09:53:17+00:00"
+    },
+    {
+      "message_id": "msg_0141",
+      "room_id": "room_002",
+      "sender_id": "user_006",
+      "sender_nickname": "리팩토링왕",
+      "content": "감사합니다 🙏",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:10:00+00:00"
+    },
+    {
+      "message_id": "msg_0142",
+      "room_id": "room_003",
+      "sender_id": "user_016",
+      "sender_nickname": "여행가자",
+      "content": "@산책러 확인 부탁드립니다",
+      "has_mention": true,
+      "mention_user_id": "user_017",
+      "timestamp": "2024-01-15T09:56:24+00:00"
+    },
+    {
+      "message_id": "msg_0143",
+      "room_id": "room_003",
+      "sender_id": "user_012",
+      "sender_nickname": "배고픈하마",
+      "content": "ㅋㅋㅋ 대박",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:33:08+00:00"
+    },
+    {
+      "message_id": "msg_0144",
+      "room_id": "room_001",
+      "sender_id": "user_003",
+      "sender_nickname": "버그킬러",
+      "content": "주말에 같이 갈까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:26:13+00:00"
+    },
+    {
+      "message_id": "msg_0145",
+      "room_id": "room_003",
+      "sender_id": "user_017",
+      "sender_nickname": "산책러",
+      "content": "다들 뭐하고 계세요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:57:36+00:00"
+    },
+    {
+      "message_id": "msg_0146",
+      "room_id": "room_002",
+      "sender_id": "user_010",
+      "sender_nickname": "미식가",
+      "content": "@야식의신 님 이거 어떻게 생각하세요?",
+      "has_mention": true,
+      "mention_user_id": "user_009",
+      "timestamp": "2024-01-15T09:26:35+00:00"
+    },
+    {
+      "message_id": "msg_0147",
+      "room_id": "room_002",
+      "sender_id": "user_008",
+      "sender_nickname": "맛집헌터",
+      "content": "감사합니다 🙏",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:12:10+00:00"
+    },
+    {
+      "message_id": "msg_0148",
+      "room_id": "room_001",
+      "sender_id": "user_004",
+      "sender_nickname": "커피중독자",
+      "content": "이번 프로젝트 화이팅!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:31:51+00:00"
+    },
+    {
+      "message_id": "msg_0149",
+      "room_id": "room_003",
+      "sender_id": "user_016",
+      "sender_nickname": "여행가자",
+      "content": "맛있겠다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:14:48+00:00"
+    },
+    {
+      "message_id": "msg_0150",
+      "room_id": "room_003",
+      "sender_id": "user_015",
+      "sender_nickname": "디저트요정",
+      "content": "@치킨광 님 이거 어떻게 생각하세요?",
+      "has_mention": true,
+      "mention_user_id": "user_014",
+      "timestamp": "2024-01-15T09:44:42+00:00"
+    },
+    {
+      "message_id": "msg_0151",
+      "room_id": "room_001",
+      "sender_id": "user_003",
+      "sender_nickname": "버그킬러",
+      "content": "@개발새발 님 이거 어떻게 생각하세요?",
+      "has_mention": true,
+      "mention_user_id": "user_002",
+      "timestamp": "2024-01-15T09:35:00+00:00"
+    },
+    {
+      "message_id": "msg_0152",
+      "room_id": "room_003",
+      "sender_id": "user_015",
+      "sender_nickname": "디저트요정",
+      "content": "이번 프로젝트 화이팅!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:27:41+00:00"
+    },
+    {
+      "message_id": "msg_0153",
+      "room_id": "room_002",
+      "sender_id": "user_009",
+      "sender_nickname": "야식의신",
+      "content": "오늘 회의 몇 시죠?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:55:44+00:00"
+    },
+    {
+      "message_id": "msg_0154",
+      "room_id": "room_001",
+      "sender_id": "user_005",
+      "sender_nickname": "야근전사",
+      "content": "오늘 회의 몇 시죠?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:06:18+00:00"
+    },
+    {
+      "message_id": "msg_0155",
+      "room_id": "room_003",
+      "sender_id": "user_012",
+      "sender_nickname": "배고픈하마",
+      "content": "이번 프로젝트 화이팅!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:07:42+00:00"
+    },
+    {
+      "message_id": "msg_0156",
+      "room_id": "room_002",
+      "sender_id": "user_010",
+      "sender_nickname": "미식가",
+      "content": "이번 프로젝트 화이팅!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:54:15+00:00"
+    },
+    {
+      "message_id": "msg_0157",
+      "room_id": "room_003",
+      "sender_id": "user_013",
+      "sender_nickname": "라면왕",
+      "content": "다들 뭐하고 계세요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:10:12+00:00"
+    },
+    {
+      "message_id": "msg_0158",
+      "room_id": "room_001",
+      "sender_id": "user_003",
+      "sender_nickname": "버그킬러",
+      "content": "이거 한번 봐보세요!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:08:02+00:00"
+    },
+    {
+      "message_id": "msg_0159",
+      "room_id": "room_001",
+      "sender_id": "user_002",
+      "sender_nickname": "개발새발",
+      "content": "안녕하세요! 오늘 날씨 좋네요 ☀️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:05:16+00:00"
+    },
+    {
+      "message_id": "msg_0160",
+      "room_id": "room_001",
+      "sender_id": "user_004",
+      "sender_nickname": "커피중독자",
+      "content": "주말에 같이 갈까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:14:12+00:00"
+    },
+    {
+      "message_id": "msg_0161",
+      "room_id": "room_001",
+      "sender_id": "user_004",
+      "sender_nickname": "커피중독자",
+      "content": "저도 동의합니다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:17:20+00:00"
+    },
+    {
+      "message_id": "msg_0162",
+      "room_id": "room_003",
+      "sender_id": "user_015",
+      "sender_nickname": "디저트요정",
+      "content": "이거 한번 봐보세요!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:01:43+00:00"
+    },
+    {
+      "message_id": "msg_0163",
+      "room_id": "room_003",
+      "sender_id": "user_014",
+      "sender_nickname": "치킨광",
+      "content": "오늘 회의 몇 시죠?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:35:06+00:00"
+    },
+    {
+      "message_id": "msg_0164",
+      "room_id": "room_001",
+      "sender_id": "user_002",
+      "sender_nickname": "개발새발",
+      "content": "이번 프로젝트 화이팅!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:02:29+00:00"
+    },
+    {
+      "message_id": "msg_0165",
+      "room_id": "room_001",
+      "sender_id": "user_001",
+      "sender_nickname": "코딩마스터",
+      "content": "좋은 아침이에요~",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:38:16+00:00"
+    },
+    {
+      "message_id": "msg_0166",
+      "room_id": "room_001",
+      "sender_id": "user_002",
+      "sender_nickname": "개발새발",
+      "content": "좋은 아침이에요~",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:03:15+00:00"
+    },
+    {
+      "message_id": "msg_0167",
+      "room_id": "room_003",
+      "sender_id": "user_014",
+      "sender_nickname": "치킨광",
+      "content": "안녕하세요! 오늘 날씨 좋네요 ☀️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:49:48+00:00"
+    },
+    {
+      "message_id": "msg_0168",
+      "room_id": "room_001",
+      "sender_id": "user_001",
+      "sender_nickname": "코딩마스터",
+      "content": "오늘 회의 몇 시죠?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:13:55+00:00"
+    },
+    {
+      "message_id": "msg_0169",
+      "room_id": "room_002",
+      "sender_id": "user_010",
+      "sender_nickname": "미식가",
+      "content": "감사합니다 🙏",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:56:00+00:00"
+    },
+    {
+      "message_id": "msg_0170",
+      "room_id": "room_002",
+      "sender_id": "user_009",
+      "sender_nickname": "야식의신",
+      "content": "주말에 같이 갈까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:16:03+00:00"
+    },
+    {
+      "message_id": "msg_0171",
+      "room_id": "room_003",
+      "sender_id": "user_015",
+      "sender_nickname": "디저트요정",
+      "content": "저도 동의합니다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:16:30+00:00"
+    },
+    {
+      "message_id": "msg_0172",
+      "room_id": "room_003",
+      "sender_id": "user_014",
+      "sender_nickname": "치킨광",
+      "content": "맛있겠다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:17:06+00:00"
+    },
+    {
+      "message_id": "msg_0173",
+      "room_id": "room_003",
+      "sender_id": "user_017",
+      "sender_nickname": "산책러",
+      "content": "오늘 회의 몇 시죠?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:43:00+00:00"
+    },
+    {
+      "message_id": "msg_0174",
+      "room_id": "room_002",
+      "sender_id": "user_007",
+      "sender_nickname": "주니어코더",
+      "content": "퇴근했습니다 ✌️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:00:33+00:00"
+    },
+    {
+      "message_id": "msg_0175",
+      "room_id": "room_002",
+      "sender_id": "user_010",
+      "sender_nickname": "미식가",
+      "content": "오늘 회의 몇 시죠?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:00:54+00:00"
+    },
+    {
+      "message_id": "msg_0176",
+      "room_id": "room_001",
+      "sender_id": "user_003",
+      "sender_nickname": "버그킬러",
+      "content": "오늘 회의 몇 시죠?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:08:45+00:00"
+    },
+    {
+      "message_id": "msg_0177",
+      "room_id": "room_003",
+      "sender_id": "user_013",
+      "sender_nickname": "라면왕",
+      "content": "이거 한번 봐보세요!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:26:24+00:00"
+    },
+    {
+      "message_id": "msg_0178",
+      "room_id": "room_002",
+      "sender_id": "user_008",
+      "sender_nickname": "맛집헌터",
+      "content": "맛있겠다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:53:06+00:00"
+    },
+    {
+      "message_id": "msg_0179",
+      "room_id": "room_001",
+      "sender_id": "user_002",
+      "sender_nickname": "개발새발",
+      "content": "오늘 점심 뭐 먹을까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:23:44+00:00"
+    },
+    {
+      "message_id": "msg_0180",
+      "room_id": "room_002",
+      "sender_id": "user_007",
+      "sender_nickname": "주니어코더",
+      "content": "@맛집헌터 확인 부탁드립니다",
+      "has_mention": true,
+      "mention_user_id": "user_008",
+      "timestamp": "2024-01-15T09:08:57+00:00"
+    },
+    {
+      "message_id": "msg_0181",
+      "room_id": "room_002",
+      "sender_id": "user_009",
+      "sender_nickname": "야식의신",
+      "content": "ㅋㅋㅋ 대박",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:54:00+00:00"
+    },
+    {
+      "message_id": "msg_0182",
+      "room_id": "room_002",
+      "sender_id": "user_009",
+      "sender_nickname": "야식의신",
+      "content": "안녕하세요! 오늘 날씨 좋네요 ☀️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:21:07+00:00"
+    },
+    {
+      "message_id": "msg_0183",
+      "room_id": "room_002",
+      "sender_id": "user_009",
+      "sender_nickname": "야식의신",
+      "content": "맛있겠다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:15:50+00:00"
+    },
+    {
+      "message_id": "msg_0184",
+      "room_id": "room_003",
+      "sender_id": "user_016",
+      "sender_nickname": "여행가자",
+      "content": "안녕하세요! 오늘 날씨 좋네요 ☀️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:25:24+00:00"
+    },
+    {
+      "message_id": "msg_0185",
+      "room_id": "room_003",
+      "sender_id": "user_014",
+      "sender_nickname": "치킨광",
+      "content": "오늘 회의 몇 시죠?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:03:04+00:00"
+    },
+    {
+      "message_id": "msg_0186",
+      "room_id": "room_002",
+      "sender_id": "user_008",
+      "sender_nickname": "맛집헌터",
+      "content": "좋은 아침이에요~",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:40:05+00:00"
+    },
+    {
+      "message_id": "msg_0187",
+      "room_id": "room_002",
+      "sender_id": "user_010",
+      "sender_nickname": "미식가",
+      "content": "@주니어코더 확인 부탁드립니다",
+      "has_mention": true,
+      "mention_user_id": "user_007",
+      "timestamp": "2024-01-15T09:49:36+00:00"
+    },
+    {
+      "message_id": "msg_0188",
+      "room_id": "room_001",
+      "sender_id": "user_003",
+      "sender_nickname": "버그킬러",
+      "content": "저도 동의합니다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:49:52+00:00"
+    },
+    {
+      "message_id": "msg_0189",
+      "room_id": "room_001",
+      "sender_id": "user_004",
+      "sender_nickname": "커피중독자",
+      "content": "ㅋㅋㅋ 대박",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:08:56+00:00"
+    },
+    {
+      "message_id": "msg_0190",
+      "room_id": "room_003",
+      "sender_id": "user_017",
+      "sender_nickname": "산책러",
+      "content": "저도 동의합니다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:15:36+00:00"
+    },
+    {
+      "message_id": "msg_0191",
+      "room_id": "room_001",
+      "sender_id": "user_004",
+      "sender_nickname": "커피중독자",
+      "content": "맛있겠다!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:15:50+00:00"
+    },
+    {
+      "message_id": "msg_0192",
+      "room_id": "room_003",
+      "sender_id": "user_015",
+      "sender_nickname": "디저트요정",
+      "content": "안녕하세요! 오늘 날씨 좋네요 ☀️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:35:30+00:00"
+    },
+    {
+      "message_id": "msg_0193",
+      "room_id": "room_002",
+      "sender_id": "user_010",
+      "sender_nickname": "미식가",
+      "content": "주말에 같이 갈까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:10:24+00:00"
+    },
+    {
+      "message_id": "msg_0194",
+      "room_id": "room_001",
+      "sender_id": "user_001",
+      "sender_nickname": "코딩마스터",
+      "content": "이번 프로젝트 화이팅!",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:45:02+00:00"
+    },
+    {
+      "message_id": "msg_0195",
+      "room_id": "room_001",
+      "sender_id": "user_004",
+      "sender_nickname": "커피중독자",
+      "content": "오늘 점심 뭐 먹을까요?",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:06:28+00:00"
+    },
+    {
+      "message_id": "msg_0196",
+      "room_id": "room_002",
+      "sender_id": "user_009",
+      "sender_nickname": "야식의신",
+      "content": "ㅋㅋㅋ 대박",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:22:45+00:00"
+    },
+    {
+      "message_id": "msg_0197",
+      "room_id": "room_002",
+      "sender_id": "user_008",
+      "sender_nickname": "맛집헌터",
+      "content": "ㅋㅋㅋ 대박",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:21:40+00:00"
+    },
+    {
+      "message_id": "msg_0198",
+      "room_id": "room_002",
+      "sender_id": "user_008",
+      "sender_nickname": "맛집헌터",
+      "content": "좋은 아침이에요~",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T10:28:39+00:00"
+    },
+    {
+      "message_id": "msg_0199",
+      "room_id": "room_002",
+      "sender_id": "user_008",
+      "sender_nickname": "맛집헌터",
+      "content": "퇴근했습니다 ✌️",
+      "has_mention": false,
+      "mention_user_id": null,
+      "timestamp": "2024-01-15T09:09:54+00:00"
+    },
+    {
+      "message_id": "msg_0200",
+      "room_id": "room_002",
+      "sender_id": "user_006",
+      "sender_nickname": "리팩토링왕",
+      "content": "@주니어코더 확인 부탁드립니다",
+      "has_mention": true,
+      "mention_user_id": "user_007",
+      "timestamp": "2024-01-15T09:39:48+00:00"
+    }
+  ]
+}

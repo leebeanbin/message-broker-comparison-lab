@@ -1,0 +1,299 @@
+{
+  "deliveries": [
+    {
+      "delivery_id": "DLV-20260219-001",
+      "order_id": "ORD-20260219-1001",
+      "restaurant_name": "맘스터치 강남점",
+      "restaurant_phone": "017-104-3321",
+      "customer_name": "손미경",
+      "customer_phone": "061-001-3389",
+      "customer_address": "인천광역시 강남구 언주94로 349-36",
+      "rider_name": "성성진",
+      "rider_phone": "032-615-5940",
+      "order_amount": 17296,
+      "estimated_time_minutes": 20,
+      "timeline": [
+        {
+          "stage": "order_accepted",
+          "display": "주문 접수",
+          "delay_seconds": 0,
+          "description": "가맹점에서 주문을 확인했습니다"
+        },
+        {
+          "stage": "cooking",
+          "display": "조리 시작",
+          "delay_seconds": 5,
+          "description": "음식을 조리하고 있습니다"
+        },
+        {
+          "stage": "delivering",
+          "display": "배달 출발",
+          "delay_seconds": 10,
+          "description": "라이더가 배달을 시작했습니다"
+        },
+        {
+          "stage": "delivered",
+          "display": "배달 완료",
+          "delay_seconds": 15,
+          "description": "배달이 완료되었습니다"
+        }
+      ],
+      "ttl_config": {
+        "order_accepted": {
+          "ttl_ms": 60000,
+          "reason": "가맹점이 1분 내 확인하지 않으면 자동 취소"
+        },
+        "cooking": {
+          "ttl_ms": 45000,
+          "reason": "예상 조리 시간 초과 시 지연 알림"
+        },
+        "delivering": {
+          "ttl_ms": 30000,
+          "reason": "예상 배달 시간 초과 시 고객 알림"
+        }
+      },
+      "topic_routing": {
+        "order_accepted": "delivery.status.accepted",
+        "cooking": "delivery.status.cooking",
+        "delivering": "delivery.status.delivering",
+        "delivered": "delivery.status.delivered"
+      }
+    },
+    {
+      "delivery_id": "DLV-20260219-002",
+      "order_id": "ORD-20260219-1002",
+      "restaurant_name": "BBQ치킨 역삼점",
+      "restaurant_phone": "070-7816-1849",
+      "customer_name": "이서연",
+      "customer_phone": "032-034-1316",
+      "customer_address": "세종특별자치시 관악구 역삼53거리 651 (미정김리)",
+      "rider_name": "진재현",
+      "rider_phone": "010-3503-0564",
+      "order_amount": 28024,
+      "estimated_time_minutes": 27,
+      "timeline": [
+        {
+          "stage": "order_accepted",
+          "display": "주문 접수",
+          "delay_seconds": 0,
+          "description": "가맹점에서 주문을 확인했습니다"
+        },
+        {
+          "stage": "cooking",
+          "display": "조리 시작",
+          "delay_seconds": 5,
+          "description": "음식을 조리하고 있습니다"
+        },
+        {
+          "stage": "delivering",
+          "display": "배달 출발",
+          "delay_seconds": 10,
+          "description": "라이더가 배달을 시작했습니다"
+        },
+        {
+          "stage": "delivered",
+          "display": "배달 완료",
+          "delay_seconds": 15,
+          "description": "배달이 완료되었습니다"
+        }
+      ],
+      "ttl_config": {
+        "order_accepted": {
+          "ttl_ms": 60000,
+          "reason": "가맹점이 1분 내 확인하지 않으면 자동 취소"
+        },
+        "cooking": {
+          "ttl_ms": 45000,
+          "reason": "예상 조리 시간 초과 시 지연 알림"
+        },
+        "delivering": {
+          "ttl_ms": 30000,
+          "reason": "예상 배달 시간 초과 시 고객 알림"
+        }
+      },
+      "topic_routing": {
+        "order_accepted": "delivery.status.accepted",
+        "cooking": "delivery.status.cooking",
+        "delivering": "delivery.status.delivering",
+        "delivered": "delivery.status.delivered"
+      }
+    },
+    {
+      "delivery_id": "DLV-20260219-003",
+      "order_id": "ORD-20260219-1003",
+      "restaurant_name": "본죽 서초점",
+      "restaurant_phone": "032-395-3767",
+      "customer_name": "김정호",
+      "customer_phone": "010-4969-6532",
+      "customer_address": "강원도 괴산군 봉은사길 611 (준영최리)",
+      "rider_name": "우지혜",
+      "rider_phone": "02-1845-1462",
+      "order_amount": 24628,
+      "estimated_time_minutes": 24,
+      "timeline": [
+        {
+          "stage": "order_accepted",
+          "display": "주문 접수",
+          "delay_seconds": 0,
+          "description": "가맹점에서 주문을 확인했습니다"
+        },
+        {
+          "stage": "cooking",
+          "display": "조리 시작",
+          "delay_seconds": 5,
+          "description": "음식을 조리하고 있습니다"
+        },
+        {
+          "stage": "delivering",
+          "display": "배달 출발",
+          "delay_seconds": 10,
+          "description": "라이더가 배달을 시작했습니다"
+        },
+        {
+          "stage": "delivered",
+          "display": "배달 완료",
+          "delay_seconds": 15,
+          "description": "배달이 완료되었습니다"
+        }
+      ],
+      "ttl_config": {
+        "order_accepted": {
+          "ttl_ms": 60000,
+          "reason": "가맹점이 1분 내 확인하지 않으면 자동 취소"
+        },
+        "cooking": {
+          "ttl_ms": 45000,
+          "reason": "예상 조리 시간 초과 시 지연 알림"
+        },
+        "delivering": {
+          "ttl_ms": 30000,
+          "reason": "예상 배달 시간 초과 시 고객 알림"
+        }
+      },
+      "topic_routing": {
+        "order_accepted": "delivery.status.accepted",
+        "cooking": "delivery.status.cooking",
+        "delivering": "delivery.status.delivering",
+        "delivered": "delivery.status.delivered"
+      }
+    },
+    {
+      "delivery_id": "DLV-20260219-004",
+      "order_id": "ORD-20260219-1004",
+      "restaurant_name": "명동교자 신촌점",
+      "restaurant_phone": "062-048-2814",
+      "customer_name": "박서연",
+      "customer_phone": "054-288-0957",
+      "customer_address": "부산광역시 은평구 언주3로 836",
+      "rider_name": "권정훈",
+      "rider_phone": "041-782-4896",
+      "order_amount": 16717,
+      "estimated_time_minutes": 41,
+      "timeline": [
+        {
+          "stage": "order_accepted",
+          "display": "주문 접수",
+          "delay_seconds": 0,
+          "description": "가맹점에서 주문을 확인했습니다"
+        },
+        {
+          "stage": "cooking",
+          "display": "조리 시작",
+          "delay_seconds": 5,
+          "description": "음식을 조리하고 있습니다"
+        },
+        {
+          "stage": "delivering",
+          "display": "배달 출발",
+          "delay_seconds": 10,
+          "description": "라이더가 배달을 시작했습니다"
+        },
+        {
+          "stage": "delivered",
+          "display": "배달 완료",
+          "delay_seconds": 15,
+          "description": "배달이 완료되었습니다"
+        }
+      ],
+      "ttl_config": {
+        "order_accepted": {
+          "ttl_ms": 60000,
+          "reason": "가맹점이 1분 내 확인하지 않으면 자동 취소"
+        },
+        "cooking": {
+          "ttl_ms": 45000,
+          "reason": "예상 조리 시간 초과 시 지연 알림"
+        },
+        "delivering": {
+          "ttl_ms": 30000,
+          "reason": "예상 배달 시간 초과 시 고객 알림"
+        }
+      },
+      "topic_routing": {
+        "order_accepted": "delivery.status.accepted",
+        "cooking": "delivery.status.cooking",
+        "delivering": "delivery.status.delivering",
+        "delivered": "delivery.status.delivered"
+      }
+    },
+    {
+      "delivery_id": "DLV-20260219-005",
+      "order_id": "ORD-20260219-1005",
+      "restaurant_name": "홍콩반점 합정점",
+      "restaurant_phone": "043-834-6578",
+      "customer_name": "김도윤",
+      "customer_phone": "02-9839-3010",
+      "customer_address": "강원도 수원시 영통구 학동347길 741",
+      "rider_name": "최예은",
+      "rider_phone": "063-631-1656",
+      "order_amount": 45741,
+      "estimated_time_minutes": 22,
+      "timeline": [
+        {
+          "stage": "order_accepted",
+          "display": "주문 접수",
+          "delay_seconds": 0,
+          "description": "가맹점에서 주문을 확인했습니다"
+        },
+        {
+          "stage": "cooking",
+          "display": "조리 시작",
+          "delay_seconds": 5,
+          "description": "음식을 조리하고 있습니다"
+        },
+        {
+          "stage": "delivering",
+          "display": "배달 출발",
+          "delay_seconds": 10,
+          "description": "라이더가 배달을 시작했습니다"
+        },
+        {
+          "stage": "delivered",
+          "display": "배달 완료",
+          "delay_seconds": 15,
+          "description": "배달이 완료되었습니다"
+        }
+      ],
+      "ttl_config": {
+        "order_accepted": {
+          "ttl_ms": 60000,
+          "reason": "가맹점이 1분 내 확인하지 않으면 자동 취소"
+        },
+        "cooking": {
+          "ttl_ms": 45000,
+          "reason": "예상 조리 시간 초과 시 지연 알림"
+        },
+        "delivering": {
+          "ttl_ms": 30000,
+          "reason": "예상 배달 시간 초과 시 고객 알림"
+        }
+      },
+      "topic_routing": {
+        "order_accepted": "delivery.status.accepted",
+        "cooking": "delivery.status.cooking",
+        "delivering": "delivery.status.delivering",
+        "delivered": "delivery.status.delivered"
+      }
+    }
+  ]
+}

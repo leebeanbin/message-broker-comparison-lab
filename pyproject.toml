@@ -1,0 +1,46 @@
+[project]
+name = "kafkarabbittest"
+version = "0.1.0"
+description = "Kafka, RabbitMQ, Redis 메시지 브로커 비교 학습 + 모니터링 프로젝트"
+readme = "README.md"
+requires-python = ">=3.12,<4"
+dependencies = [
+    # Web Framework
+    "fastapi",
+    "uvicorn[standard]",
+    "httpx",
+    # Message Brokers
+    "aiokafka",           # Kafka async client
+    "aio-pika",           # RabbitMQ async client (AMQP)
+    "redis[hiredis]",     # Redis with C parser
+    # Monitoring & Metrics
+    "prometheus-client",
+    "prometheus-fastapi-instrumentator",
+    # Jupyter
+    "jupyter",
+    "jupyterlab",
+    "matplotlib",
+    "pandas",
+    "rich",               # Pretty console output
+    # Utilities
+    "pydantic-settings",
+    "python-dotenv",
+    "faker",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "ruff",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"

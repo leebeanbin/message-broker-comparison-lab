@@ -1,0 +1,27 @@
+{
+  "recommendations": [
+    // === Python 개발 필수 ===
+    "ms-python.python",                    // Python 언어 지원
+    "ms-python.vscode-pylance",            // Python 타입 체크 + 자동완성
+    "charliermarsh.ruff",                  // Ruff (초고속 린터/포매터)
+
+    // === Jupyter ===
+    "ms-toolsai.jupyter",                  // Jupyter 노트북 지원
+    "ms-toolsai.jupyter-renderers",        // 노트북 렌더러
+
+    // === Docker ===
+    "ms-azuretools.vscode-docker",         // Docker/Compose 지원 (필수)
+
+    // === API 테스트 ===
+    "humao.rest-client",                   // .http 파일로 API 테스트 (Thunder Client 대안)
+
+    // === 데이터 ===
+    "cweijan.vscode-redis-client",         // Redis GUI (키/값 조회)
+    "RandomFractalsInc.vscode-data-table", // 데이터 테이블 뷰어
+
+    // === 편의 도구 ===
+    "eamodio.gitlens",                     // Git 히스토리/블레임
+    "gruntfuggly.todo-tree",              // TODO 태그 관리
+    "esbenp.prettier-vscode"              // 포매터 (YAML/JSON)
+  ]
+}

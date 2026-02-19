@@ -1,0 +1,217 @@
+{
+  "scenarios": [
+    {
+      "scenario_type": "SUCCESS",
+      "order_id": "SAGA-001",
+      "user": "김수민",
+      "product": "맥북 프로 16인치",
+      "amount": 3990000,
+      "currency": "KRW",
+      "timestamp": "2026-02-19T10:30:00Z",
+      "steps": [
+        {
+          "step": "create_order",
+          "description": "주문 생성",
+          "timeout_seconds": 5,
+          "expected": "success"
+        },
+        {
+          "step": "process_payment",
+          "description": "결제 처리",
+          "timeout_seconds": 10,
+          "expected": "success"
+        },
+        {
+          "step": "reserve_inventory",
+          "description": "재고 예약",
+          "timeout_seconds": 5,
+          "expected": "success"
+        },
+        {
+          "step": "arrange_shipping",
+          "description": "배송 준비",
+          "timeout_seconds": 5,
+          "expected": "success"
+        }
+      ],
+      "compensations": [
+        {
+          "step": "cancel_shipping",
+          "description": "배송 취소",
+          "timeout_seconds": 5
+        },
+        {
+          "step": "release_inventory",
+          "description": "재고 복원",
+          "timeout_seconds": 5
+        },
+        {
+          "step": "refund_payment",
+          "description": "결제 환불",
+          "timeout_seconds": 10
+        },
+        {
+          "step": "cancel_order",
+          "description": "주문 취소",
+          "timeout_seconds": 5
+        }
+      ]
+    },
+    {
+      "scenario_type": "PAYMENT_FAIL",
+      "order_id": "SAGA-002",
+      "user": "서정남",
+      "product": "갤럭시 S24 울트라",
+      "amount": 1650000,
+      "currency": "KRW",
+      "timestamp": "2026-02-19T10:35:00Z",
+      "steps": [
+        {
+          "step": "create_order",
+          "description": "주문 생성",
+          "timeout_seconds": 5,
+          "expected": "success"
+        },
+        {
+          "step": "process_payment",
+          "description": "결제 처리",
+          "timeout_seconds": 10,
+          "expected": "fail",
+          "fail_reason": "잔액 부족"
+        }
+      ],
+      "compensations": [
+        {
+          "step": "cancel_order",
+          "description": "주문 취소",
+          "timeout_seconds": 5
+        }
+      ]
+    },
+    {
+      "scenario_type": "INVENTORY_FAIL",
+      "order_id": "SAGA-003",
+      "user": "김영자",
+      "product": "에어팟 프로 2",
+      "amount": 359000,
+      "currency": "KRW",
+      "timestamp": "2026-02-19T10:40:00Z",
+      "steps": [
+        {
+          "step": "create_order",
+          "description": "주문 생성",
+          "timeout_seconds": 5,
+          "expected": "success"
+        },
+        {
+          "step": "process_payment",
+          "description": "결제 처리",
+          "timeout_seconds": 10,
+          "expected": "success"
+        },
+        {
+          "step": "reserve_inventory",
+          "description": "재고 예약",
+          "timeout_seconds": 5,
+          "expected": "fail",
+          "fail_reason": "재고 소진"
+        }
+      ],
+      "compensations": [
+        {
+          "step": "refund_payment",
+          "description": "결제 환불",
+          "timeout_seconds": 10
+        },
+        {
+          "step": "cancel_order",
+          "description": "주문 취소",
+          "timeout_seconds": 5
+        }
+      ]
+    },
+    {
+      "scenario_type": "SHIPPING_FAIL",
+      "order_id": "SAGA-004",
+      "user": "김영일",
+      "product": "아이패드 에어 5",
+      "amount": 929000,
+      "currency": "KRW",
+      "timestamp": "2026-02-19T10:45:00Z",
+      "steps": [
+        {
+          "step": "create_order",
+          "description": "주문 생성",
+          "timeout_seconds": 5,
+          "expected": "success"
+        },
+        {
+          "step": "process_payment",
+          "description": "결제 처리",
+          "timeout_seconds": 10,
+          "expected": "success"
+        },
+        {
+          "step": "reserve_inventory",
+          "description": "재고 예약",
+          "timeout_seconds": 5,
+          "expected": "success"
+        },
+        {
+          "step": "arrange_shipping",
+          "description": "배송 준비",
+          "timeout_seconds": 5,
+          "expected": "fail",
+          "fail_reason": "배송 불가 지역"
+        }
+      ],
+      "compensations": [
+        {
+          "step": "release_inventory",
+          "description": "재고 복원",
+          "timeout_seconds": 5
+        },
+        {
+          "step": "refund_payment",
+          "description": "결제 환불",
+          "timeout_seconds": 10
+        },
+        {
+          "step": "cancel_order",
+          "description": "주문 취소",
+          "timeout_seconds": 5
+        }
+      ]
+    },
+    {
+      "scenario_type": "TIMEOUT",
+      "order_id": "SAGA-005",
+      "user": "김재호",
+      "product": "LG 그램 17",
+      "amount": 2190000,
+      "currency": "KRW",
+      "timestamp": "2026-02-19T10:50:00Z",
+      "steps": [
+        {
+          "step": "create_order",
+          "description": "주문 생성",
+          "timeout_seconds": 5,
+          "expected": "success"
+        },
+        {
+          "step": "process_payment",
+          "description": "결제 처리",
+          "timeout_seconds": 3,
+          "expected": "timeout"
+        }
+      ],
+      "compensations": [
+        {
+          "step": "cancel_order",
+          "description": "주문 취소",
+          "timeout_seconds": 5
+        }
+      ]
+    }
+  ]
+}
