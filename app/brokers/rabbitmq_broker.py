@@ -328,7 +328,7 @@ class RabbitMQBroker(AbstractBroker):
             aio_pika.Message(
                 body=payload.encode(),
                 delivery_mode=aio_pika.DeliveryMode.PERSISTENT,
-                expiration=str(ttl_ms),
+                expiration=int(ttl_ms),
             ),
             routing_key=queue_name,
         )

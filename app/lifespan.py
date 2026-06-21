@@ -32,7 +32,9 @@ async def lifespan(app: FastAPI):
         try:
             await broker.connect()
         except Exception as e:
+            import traceback
             print(f"⚠️  {broker.name} 연결 실패 (나중에 연결 가능): {e}")
+            traceback.print_exc()
 
     print("=" * 60)
     print(f"📋 Swagger UI: http://localhost:{settings.app_port}/docs")

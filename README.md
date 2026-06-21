@@ -710,7 +710,7 @@ lsof -i :9092   # Kafka
 ### uv sync 실패
 
 ```bash
-# Python 3.12 필요
-uv python install 3.12
+# Python 3.13 필요
+uv python install 3.13
 uv sync
 ```

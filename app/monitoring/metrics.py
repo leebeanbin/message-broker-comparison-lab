@@ -19,7 +19,7 @@ PUBLISH_LATENCY = Histogram(
     "broker_publish_latency_seconds",
     "메시지 발행 지연시간 (초)",
     labelnames=["broker"],
-    buckets=[0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0],
+    buckets=[0.0001, 0.0002, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0],
 )
 
 PUBLISH_COUNT = Counter(
@@ -60,6 +60,9 @@ class BenchmarkResult:
     min_latency_ms: float
     max_latency_ms: float
     throughput_msg_per_sec: float
+    p50_latency_ms: float = 0.0
+    p99_latency_ms: float = 0.0
+    note: str = ""
     timestamp: float = field(default_factory=time.time)
 
 

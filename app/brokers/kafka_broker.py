@@ -46,11 +46,20 @@ class KafkaBroker(AbstractBroker):
     async def disconnect(self) -> None:
         """Kafka 전체 연결 종료"""
         if self.producer:
-            await self.producer.stop()
+            try:
+                await self.producer.stop()
+            except Exception as e:
+                print(f"⚠️ Kafka Producer stop 에러: {e}")
         if self.consumer:
-            await self.consumer.stop()
+            try:
+                await self.consumer.stop()
+            except Exception as e:
+                print(f"⚠️ Kafka Consumer stop 에러: {e}")
         if self.admin:
-            await self.admin.close()
+            try:
+                await self.admin.close()
+            except Exception as e:
+                print(f"⚠️ Kafka Admin close 에러: {e}")
         self.producer = None
         self.consumer = None
         self.admin = None
@@ -284,7 +293,7 @@ class KafkaBroker(AbstractBroker):
 
     async def topic_info(self, topic: str) -> dict:
         """토픽 상세 정보"""
-        partitions = self.producer.partitions_for(topic)
+        partitions = await self.producer.partitions_for(topic)
 
         partition_info = []
         if partitions:

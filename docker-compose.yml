@@ -22,6 +22,11 @@ services:
       interval: 10s
       timeout: 3s
       retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
 
   # ── RabbitMQ 4 (Management UI 포함) ───────
   # RabbitMQ 4: Quorum Queue 기본, Classic Mirror 제거
@@ -42,11 +47,16 @@ services:
       interval: 15s
       timeout: 10s
       retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
 
   # ── Kafka 4.0 (KRaft 전용 - ZooKeeper 완전 제거) ─
   # Kafka 4.0: ZooKeeper 코드 완전 삭제, KRaft만 지원
   kafka:
-    image: apache/kafka:4.0
+    image: apache/kafka:4.0.0
     container_name: lab-kafka
     ports:
       - "9092:9092"     # 외부 접근
@@ -72,6 +82,11 @@ services:
       timeout: 10s
       retries: 10
       start_period: 30s
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 1024M
 
   # ── Kafka UI (웹 관리 도구) ────────────────
   kafka-ui:
@@ -100,6 +115,12 @@ services:
       - '--storage.tsdb.retention.time=7d'
     depends_on:
       - app
+      - image-processor
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
 
   # ── Grafana (시각화 대시보드) ──────────────
   grafana:
@@ -114,6 +135,11 @@ services:
       - grafana_data:/var/lib/grafana
     depends_on:
       - prometheus
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
 
   # ── Go 이미지 처리 서비스 ──────────────────
   image-processor:
@@ -132,6 +158,11 @@ services:
       rabbitmq:
         condition: service_healthy
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
 
   # ── FastAPI 앱 ─────────────────────────────
   app:
@@ -153,6 +184,11 @@ services:
       kafka:
         condition: service_healthy
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
 
 volumes:
   redis_data:
