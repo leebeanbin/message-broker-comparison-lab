@@ -17,6 +17,7 @@
 - [모니터링 스택](#모니터링-스택)
 - [Docker 학습 포인트](#docker-학습-포인트)
 - [학습 로드맵](#학습-로드맵)
+- [AI & MCP 연동](#ai--mcp-연동)
 - [프로젝트 구조](#프로젝트-구조)
 - [트러블슈팅](#트러블슈팅)
 
@@ -586,6 +587,68 @@ docker compose up -d --build app
 실무와 동일한 시나리오를 재현합니다.
 ```
 
+### Phase 6: AI & 고처리량 심화 (Day 11-12) — 노트북 18~20 🤖
+
+```
+📓 18_challenge_ai_semantic_cache.ipynb → ⭐⭐⭐⭐   AI 시맨틱 캐시 (Redis Vector Set + Kafka + RabbitMQ)
+📓 19_beanllm_broker_synergy.ipynb     → ⭐⭐⭐⭐⭐ AI 프레임워크 × 브로커 시너지
+                                           (beanllm 내부 구조 역설계 + 실제 AI 파이프라인 패턴)
+📓 20_high_throughput_tuning.ipynb     → ⭐⭐⭐⭐⭐ 대용량 처리 튜닝
+                                           (Redis Pipeline, Kafka Batch 최적화, P99 Tail Latency)
+
+노트북 19: beanllm을 직접 실행하지 않아도 수행 가능
+           beanllm의 각 기능이 어떤 브로커 패턴을 사용하는지 역설계하며 학습
+노트북 20: 브로커 랩만으로 실행 가능한 프로덕션 튜닝 실험
+           처리량 x4 이상 향상, Tail Latency 분석, 스케일 선형성 검증
+```
+
+<br>
+
+---
+
+## AI & MCP 연동
+
+> 2025~2026 트렌드: 메시지 브로커는 AI 에이전트의 **신경계**가 되고 있습니다.
+> 이 섹션은 브로커 패턴이 실제 AI 시스템에서 어떻게 활용되는지 연결합니다.
+
+### 브로커 패턴 × AI 시스템 매핑
+
+| AI 기능 | 내부 브로커 패턴 | 브로커 랩 학습 위치 |
+|---------|----------------|--------------------|
+| RAG 벡터 검색 | Redis VADD / VSIM | Challenge 18, 노트북 19 |
+| 임베딩 캐시 | Redis Cache (TTL) | `/redis/cache/set` |
+| API Rate Limit | Redis Sliding Window | `/redis/ratelimit/check` |
+| Agent 병렬 작업 | RabbitMQ Work Queue | Challenge 11, 14 |
+| LLM 토큰 스트리밍 | Redis Stream XADD/XREAD | Challenge 13, 노트북 19 |
+| 추론 요청 버퍼링 | Kafka Topic + Batch | Challenge 18 (MISS 처리) |
+| 완료 알림 전달 | RabbitMQ Direct Queue | Challenge 16 |
+| 이벤트 소싱 / 재처리 | Kafka Consumer Group Offset | Challenge 14 |
+
+### MCP (Model Context Protocol) 연동
+
+> MCP는 AI 에이전트가 외부 도구를 표준화된 인터페이스로 호출하는 프로토콜입니다.
+> 이 브로커 랩의 FastAPI 엔드포인트는 MCP Tool로 변환 가능합니다.
+
+```python
+# beanllm Agent에서 브로커 랩 API를 Tool로 사용하는 패턴
+from beanllm import Agent, Tool
+import httpx
+
+@Tool.from_function
+async def run_broker_benchmark(broker: str, count: int = 1000) -> str:
+    """메시지 브로커 성능 벤치마크를 실행합니다"""
+    async with httpx.AsyncClient(base_url="http://localhost:8000", timeout=60) as c:
+        resp = await c.post(f"/benchmark/{broker}", json={"message_count": count})
+        data = resp.json()
+        return f"{broker}: {data.get('throughput_msg_per_sec', 0):.0f} msg/s"
+
+# AI가 자연어로 브로커를 제어!
+agent = Agent(model="gpt-4o-mini", tools=[run_broker_benchmark])
+result = await agent.run("Redis와 Kafka 벤치마크 비교해줘")
+```
+
+> **자세한 내용**: [19_beanllm_broker_synergy.ipynb](notebooks/19_beanllm_broker_synergy.ipynb)
+
 <br>
 
 ---
@@ -644,7 +707,7 @@ kafkaRabbitTest/
 ├── infra/
 │   └── prometheus.yml               # Prometheus scrape 설정
 │
-├── notebooks/                       # 📓 학습 노트북 (10개) + 실전 과제 (7개)
+├── notebooks/                       # 📓 학습 노트북 (10개) + 실전 과제 (10개)
 │   ├── 01_project_overview.ipynb           # 프로젝트 전체 구조
 │   ├── 02_redis_deep_dive.ipynb            # Redis 심화
 │   ├── 03_rabbitmq_deep_dive.ipynb         # RabbitMQ 심화
@@ -661,7 +724,10 @@ kafkaRabbitTest/
 │   ├── 14_challenge_bulk_processing.ipynb  # 🔥 대용량 처리 과제
 │   ├── 15_challenge_saga_order.ipynb       # 🔥 Saga 주문 과제
 │   ├── 16_challenge_realtime_delivery.ipynb # 🔥 실시간 배달 과제
-│   └── 17_challenge_image_pipeline.ipynb   # 🔥 이미지 파이프라인 (Go 연동)
+│   ├── 17_challenge_image_pipeline.ipynb   # 🔥 이미지 파이프라인 (Go 연동)
+│   ├── 18_challenge_ai_semantic_cache.ipynb # 🤖 AI 시맨틱 캐시 (Redis 8 Vector Set)
+│   ├── 19_beanllm_broker_synergy.ipynb    # 🤖 beanllm × 브로커 시너지 가이드
+│   └── 20_high_throughput_tuning.ipynb    # ⚡ 대용량 처리 튜닝 (P99, Pipeline, Batch)
 │
 ├── test_api.http                    # REST Client 테스트 파일
 └── .vscode/
