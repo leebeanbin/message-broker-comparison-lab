@@ -1,4 +1,4 @@
-<![CDATA[# Message Broker Comparison Lab
+# Message Broker Comparison Lab
 
 > Redis, RabbitMQ, Kafka의 **메시지 패턴, 성능, 아키텍처**를 실제 코드와 벤치마크로 비교 학습하는 프로젝트
 
@@ -828,4 +828,3 @@ lsof -i :9092   # Kafka
 uv python install 3.12
 uv sync
 ```
-]]>
