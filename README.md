@@ -26,51 +26,40 @@
 
 ## 아키텍처
 
-```
- ┌─────────────────── Client (Swagger / Jupyter / curl) ───────────────────┐
- │                                                                          │
- │  POST /redis/stream/add    POST /rabbitmq/topic/publish                 │
- │  POST /kafka/keyed/publish POST /benchmark/all                          │
- └───────────────────────────────┬──────────────────────────────────────────┘
-                                 │
-                    ┌────────────▼────────────┐
-                    │   FastAPI App (:8000)    │
-                    │                          │
-                    │  ┌────────────────────┐  │
-                    │  │   API Router       │  │
-                    │  │  /redis/*          │  │
-                    │  │  /rabbitmq/*       │  │
-                    │  │  /kafka/*          │  │
-                    │  │  /benchmark/*      │  │
-                    │  │  /monitoring/*     │  │
-                    │  └────────┬───────────┘  │
-                    │           │               │
-                    │  ┌────────▼───────────┐  │
-                    │  │  Prometheus        │  │
-                    │  │  Instrumentator    │  │
-                    │  │  → /metrics        │  │
-                    │  └───────────────────┘   │
-                    └──────┬──────┬──────┬─────┘
-                           │      │      │
-              ┌────────────┘      │      └─────────────┐
-              │                   │                     │
-     ┌────────▼────────┐ ┌───────▼────────┐  ┌────────▼────────┐
-     │     Redis        │ │   RabbitMQ     │  │     Kafka       │
-     │   (:6379)        │ │  (:5672)       │  │   (:9092)       │
-     │                  │ │                │  │                 │
-     │ • Pub/Sub        │ │ • Direct Queue │  │ • Topic         │
-     │ • Stream         │ │ • Fanout Exch. │  │ • Partition      │
-     │ • List Queue     │ │ • Topic Exch.  │  │ • Consumer Group│
-     │ • Cache (K/V)    │ │ • DLQ          │  │ • Key Routing   │
-     │ • Rate Limiter   │ │ • Priority     │  │ • Batch         │
-     │                  │ │ • TTL          │  │ • Compression   │
-     └─────────────────┘ └────────────────┘  └─────────────────┘
+![프로젝트 아키텍처](docs/images/architecture.png)
 
-     ┌──────────────┐  ┌───────────────┐  ┌───────────────┐
-     │  Prometheus   │  │   Grafana     │  │   Kafka UI    │
-     │  (:9090)      │  │  (:3000)      │  │  (:8080)      │
-     └──────────────┘  └───────────────┘  └───────────────┘
+```mermaid
+graph TD
+    Client[Client <br> Swagger / Jupyter / curl] -->|HTTP Requests| FastAPI[FastAPI App <br> :8000]
+    
+    FastAPI -->|Redis Protocol| Redis[(Redis <br> :6379)]
+    FastAPI -->|AMQP| RabbitMQ[(RabbitMQ <br> :5672)]
+    FastAPI -->|Kafka Protocol| Kafka[(Kafka <br> :9092)]
+    
+    subgraph Message Brokers
+        Redis
+        RabbitMQ
+        Kafka
+    end
+    
+    subgraph Monitoring & Tools
+        Prometheus[(Prometheus <br> :9090)] <-->|Scrape /metrics| FastAPI
+        Grafana[Grafana <br> :3000] -->|Read Metrics| Prometheus
+        KafkaUI[Kafka UI <br> :8080] <-->|Manage| Kafka
+    end
+    
+    classDef default fill:#1e1e2e,stroke:#cdd6f4,stroke-width:1px,color:#cdd6f4;
+    classDef redis fill:#4b1818,stroke:#f38ba8,stroke-width:2px,color:#f38ba8;
+    classDef rabbit fill:#4c3822,stroke:#fab387,stroke-width:2px,color:#fab387;
+    classDef kafka fill:#1c3d42,stroke:#89dceb,stroke-width:2px,color:#89dceb;
+    classDef monitor fill:#313244,stroke:#a6adc8,stroke-width:1px,color:#a6adc8;
+    
+    class Redis redis;
+    class RabbitMQ rabbit;
+    class Kafka kafka;
+    class Prometheus,Grafana,KafkaUI monitor;
 ```
+
 
 <br>
 
@@ -149,65 +138,19 @@ uv run jupyter lab
 
 ### 메시지 전달 시퀀스
 
-#### Redis Pub/Sub (Fire-and-Forget)
+#### Redis (Pub/Sub vs Stream)
 
-```
-Publisher              Redis              Subscriber A
-    │                    │                    │
-    │── PUBLISH msg ────▶│                    │
-    │                    │── push msg ───────▶│
-    │◀── (subscriber     │                    │
-    │    count: 1) ──────│    ※ 구독자 없으면 │
-    │                    │      메시지 유실!   │
-```
+![Redis Flow Diagram](docs/images/redis_flow.png)
 
-#### Redis Stream (Persistent Event Log)
+#### RabbitMQ (Smart Broker → Dumb Consumer & DLQ)
 
-```
-Producer               Redis Stream         Consumer Group
-    │                    │                    │
-    │── XADD event ─────▶│  [저장됨]          │
-    │◀── msg-id ─────────│                    │
-    │                    │                    │── XREADGROUP ──▶│
-    │                    │── event ──────────▶│                 │
-    │                    │                    │── XACK ────────▶│
-    │                    │                    │
-    │                    │  ※ ACK 전까지      │
-    │                    │    재전달 가능!      │
-```
+![RabbitMQ Flow Diagram](docs/images/rabbitmq_flow.png)
 
-#### RabbitMQ (Smart Broker → Dumb Consumer)
+#### Kafka (Dumb Broker → Smart Consumer & Partitioning)
 
-```
-Producer          Exchange          Queue           Consumer
-    │                │                │                │
-    │── publish ────▶│                │                │
-    │                │── route ──────▶│                │
-    │                │  (routing_key  │                │
-    │                │   매칭)        │── deliver ────▶│
-    │                │                │                │── ACK ──▶│
-    │                │                │                │
-    │                │                │  ※ NACK 시     │
-    │                │                │◀── requeue ────│
-    │                │                │    또는 DLQ로!  │
-```
+![Kafka Flow Diagram](docs/images/kafka_flow.png)
 
-#### Kafka (Dumb Broker → Smart Consumer)
 
-```
-Producer            Broker (Partition)       Consumer Group
-    │                    │                       │
-    │── send ───────────▶│ P0: [msg0, msg1, ...] │
-    │                    │ P1: [msg2, msg3, ...] │
-    │◀── (partition,     │ P2: [msg4, msg5, ...] │
-    │    offset) ────────│                       │
-    │                    │                       │── poll ──────▶│
-    │                    │ Consumer C1 → P0, P1  │◀── messages ──│
-    │                    │ Consumer C2 → P2      │── commit ────▶│
-    │                    │                       │
-    │                    │  ※ offset 되감기로    │
-    │                    │    언제든 재처리 가능!  │
-```
 
 ### 언제 무엇을 쓰나?
 
@@ -282,46 +225,10 @@ GET  /redis/ratelimit/check   # 요청 가능 여부 확인
 | 5 | **Priority** | Default + x-max-priority | 우선순위 처리 |
 | 6 | **TTL** | Default + expiration | 메시지 만료 정책 |
 
-### Exchange 타입 동작 원리
+### Exchange 타입 동작 원리 및 DLQ 흐름
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                     Exchange Types                           │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Direct     Producer ──▶ [Exchange] ──▶ Queue                │
-│             routing_key = queue_name (정확히 매칭)            │
-│                                                              │
-│  Fanout     Producer ──▶ [Exchange] ──▶ Queue A              │
-│                                    ──▶ Queue B              │
-│                                    ──▶ Queue C              │
-│             routing_key 무시 (모든 큐에 복제)                 │
-│                                                              │
-│  Topic      Producer("order.created")                        │
-│                  ──▶ [Exchange]                               │
-│                       ──▶ Queue("order.*")     ← 매칭!       │
-│                       ──▶ Queue("order.#")     ← 매칭!       │
-│                       ──▶ Queue("payment.*")   ← X           │
-│             * = 한 단어, # = 0개 이상 단어                    │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
-```
+![RabbitMQ Flow Diagram](docs/images/rabbitmq_flow.png)
 
-### Dead Letter Queue 흐름
-
-```
-Producer → Main Queue → Consumer
-                │           │
-                │     (처리 실패/NACK/만료)
-                │           │
-                │           ▼
-                │      Dead Letter Exchange (DLX)
-                │           │
-                │           ▼
-                └──── Dead Letter Queue (DLQ)
-                           │
-                      모니터링 / 수동 재처리
-```
 
 ### 패턴별 API
 
@@ -367,30 +274,9 @@ POST /rabbitmq/ttl/publish           # 만료 시간 있는 메시지
 
 ### 파티셔닝 원리
 
-```
-┌──────────────────────────────────────────────────────────┐
-│                    Topic: "orders"                         │
-├───────────────────┬───────────────────┬──────────────────┤
-│   Partition 0     │   Partition 1     │   Partition 2    │
-│ ┌───┬───┬───┬───┐│ ┌───┬───┬───┐    │ ┌───┬───┐       │
-│ │ 0 │ 1 │ 2 │ 3 ││ │ 0 │ 1 │ 2 │    │ │ 0 │ 1 │       │
-│ └───┴───┴───┴───┘│ └───┴───┴───┘    │ └───┴───┘       │
-│   ← oldest  new →│                   │                  │
-├───────────────────┴───────────────────┴──────────────────┤
-│                                                           │
-│  key="user-A" → hash → Partition 0 (항상!)                │
-│  key="user-B" → hash → Partition 2 (항상!)                │
-│  key=None     → Round Robin (0 → 1 → 2 → 0 → ...)       │
-│                                                           │
-├───────────────────────────────────────────────────────────┤
-│  Consumer Group "order-service"                           │
-│    Consumer C1 ← Partition 0, 1                           │
-│    Consumer C2 ← Partition 2                              │
-│                                                           │
-│  ※ 파티션 수 ≥ Consumer 수 (남는 Consumer는 idle)         │
-│  ※ 파티션 수 < Consumer 수가 되면 rebalancing 발생        │
-└───────────────────────────────────────────────────────────┘
-```
+![Kafka Flow Diagram](docs/images/kafka_flow.png)
+
+
 
 ### 패턴별 API
 
