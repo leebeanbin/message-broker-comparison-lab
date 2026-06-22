@@ -7,9 +7,14 @@ Redis 메시지 브로커 + 고급 기능
   3. List Queue    - 간단한 작업 큐 (LPUSH/BRPOP)
   4. Cache         - TTL 기반 캐시 (SET/GET)
   5. Rate Limiter  - 슬라이딩 윈도우 속도 제한
+  6. Bloom Filter  - 확률적 중복 제거 (Redis BITFIELD 기반)
+  7. TimeSeries    - 시계열 저장/조회 (Redis Sorted Set 기반)
+  8. Vector Set    - 코사인 유사도 검색 (Redis 8.0+ VADD/VSIM)
 """
 
+import hashlib
 import json
+import math
 import time
 import uuid
 from collections.abc import Callable
@@ -379,6 +384,213 @@ class RedisBroker(AbstractBroker):
             "window_seconds": window_seconds,
             "remaining": max(0, max_requests - current_count),
         }
+
+
+    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    # Redis 고유 기능: Bloom Filter (BITFIELD 기반)
+    #   Redis Stack 없이 표준 Redis BITFIELD로 구현.
+    #   false positive 가능, false negative 불가.
+    #   용도: 메시지 중복 처리 방지, 이미 처리한 ID 추적
+    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    def _bf_hash_positions(self, item: str, bit_size: int, num_hashes: int) -> list[int]:
+        """여러 해시 함수로 비트 위치 계산 (double hashing 기법)"""
+        h1 = int(hashlib.md5(item.encode()).hexdigest(), 16)
+        h2 = int(hashlib.sha1(item.encode()).hexdigest(), 16)
+        return [(h1 + i * h2) % bit_size for i in range(num_hashes)]
+
+    async def bloom_add(
+        self, filter_key: str, item: str, capacity: int = 10000, error_rate: float = 0.01
+    ) -> dict:
+        """
+        Bloom Filter: 항목 추가.
+        capacity: 예상 항목 수, error_rate: 허용 false positive 비율
+        """
+        bit_size = math.ceil(-capacity * math.log(error_rate) / (math.log(2) ** 2))
+        num_hashes = max(1, round((bit_size / capacity) * math.log(2)))
+
+        positions = self._bf_hash_positions(item, bit_size, num_hashes)
+        pipe = self.client.pipeline()
+        for pos in positions:
+            pipe.setbit(f"bf:{filter_key}", pos, 1)
+        await pipe.execute()
+
+        return {
+            "filter": filter_key,
+            "item": item,
+            "operation": "ADD",
+            "bit_positions": positions[:3],
+            "bit_size": bit_size,
+            "num_hashes": num_hashes,
+        }
+
+    async def bloom_exists(
+        self, filter_key: str, item: str, capacity: int = 10000, error_rate: float = 0.01
+    ) -> dict:
+        """
+        Bloom Filter: 항목 존재 여부 확인.
+        결과가 False이면 확실히 없음. True이면 있을 수도 있음 (false positive 가능).
+        """
+        bit_size = math.ceil(-capacity * math.log(error_rate) / (math.log(2) ** 2))
+        num_hashes = max(1, round((bit_size / capacity) * math.log(2)))
+
+        positions = self._bf_hash_positions(item, bit_size, num_hashes)
+        pipe = self.client.pipeline()
+        for pos in positions:
+            pipe.getbit(f"bf:{filter_key}", pos)
+        bits = await pipe.execute()
+
+        exists = all(bits)
+        return {
+            "filter": filter_key,
+            "item": item,
+            "operation": "EXISTS",
+            "result": exists,
+            "note": "false positive 가능 (false negative 불가)" if exists else "확실히 없음",
+        }
+
+    async def bloom_info(self, filter_key: str) -> dict:
+        """Bloom Filter 비트 배열 크기 조회"""
+        key = f"bf:{filter_key}"
+        bit_count = await self.client.bitcount(key)
+        byte_size = await self.client.strlen(key)
+        return {
+            "filter": filter_key,
+            "set_bits": bit_count,
+            "byte_size": byte_size,
+            "bit_size": byte_size * 8,
+        }
+
+    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    # Redis 고유 기능: TimeSeries (Sorted Set 기반)
+    #   Redis TimeSeries 모듈 없이 Sorted Set으로 구현.
+    #   score=timestamp(ms), member=JSON 값
+    #   용도: AI 응답 시간, 브로커 처리량, 사용자 활동 추적
+    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    async def ts_add(
+        self, series_key: str, value: float, timestamp_ms: int | None = None
+    ) -> dict:
+        """TimeSeries: 데이터 포인트 추가 (score=타임스탬프, member=값)"""
+        ts = timestamp_ms if timestamp_ms is not None else int(time.time() * 1000)
+        member = f"{ts}:{value}"
+        await self.client.zadd(f"ts:{series_key}", {member: ts})
+
+        return {
+            "series": series_key,
+            "timestamp_ms": ts,
+            "value": value,
+            "operation": "ADD",
+        }
+
+    async def ts_range(
+        self,
+        series_key: str,
+        from_ms: int | None = None,
+        to_ms: int | None = None,
+        count: int = 100,
+    ) -> dict:
+        """TimeSeries: 시간 범위 조회 (ZRANGEBYSCORE)"""
+        now_ms = int(time.time() * 1000)
+        from_ms = from_ms if from_ms is not None else now_ms - 3_600_000  # 기본: 1시간
+        to_ms = to_ms if to_ms is not None else now_ms
+
+        raw = await self.client.zrangebyscore(
+            f"ts:{series_key}", from_ms, to_ms, withscores=True, start=0, num=count
+        )
+
+        points = []
+        for member, score in raw:
+            try:
+                _, val = member.split(":", 1)
+                points.append({"timestamp_ms": int(score), "value": float(val)})
+            except ValueError:
+                continue
+
+        return {
+            "series": series_key,
+            "from_ms": from_ms,
+            "to_ms": to_ms,
+            "count": len(points),
+            "points": points,
+        }
+
+    async def ts_latest(self, series_key: str, n: int = 10) -> dict:
+        """TimeSeries: 최근 N개 데이터 포인트"""
+        raw = await self.client.zrange(
+            f"ts:{series_key}", -n, -1, withscores=True
+        )
+        points = []
+        for member, score in raw:
+            try:
+                _, val = member.split(":", 1)
+                points.append({"timestamp_ms": int(score), "value": float(val)})
+            except ValueError:
+                continue
+
+        return {"series": series_key, "count": len(points), "points": points}
+
+    async def ts_trim(self, series_key: str, max_age_seconds: int = 86400) -> dict:
+        """TimeSeries: 오래된 데이터 삭제 (보존 정책)"""
+        cutoff_ms = int((time.time() - max_age_seconds) * 1000)
+        removed = await self.client.zremrangebyscore(f"ts:{series_key}", 0, cutoff_ms)
+        return {
+            "series": series_key,
+            "removed_points": removed,
+            "cutoff_ms": cutoff_ms,
+        }
+
+    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    # Redis 8.0+ 기능: Vector Set (VADD/VSIM)
+    #   코사인 유사도 기반 최근접 이웃 검색.
+    #   용도: AI Semantic Memory, RAG 유사도 검색
+    #   요구사항: Redis 8.0+ (VADD 명령어)
+    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    async def vector_add(
+        self, vset_key: str, element_id: str, vector: list[float]
+    ) -> dict:
+        """Vector Set: 벡터 추가 (VADD)"""
+        import struct
+        dim = len(vector)
+        fp32_bytes = struct.pack(f"{dim}f", *vector)
+        try:
+            await self.client.execute_command(
+                "VADD", vset_key, "REDUCE", dim, "FP32", fp32_bytes, element_id
+            )
+            return {
+                "vset": vset_key,
+                "element_id": element_id,
+                "dimensions": dim,
+                "operation": "VADD",
+            }
+        except Exception as e:
+            return {"error": str(e), "note": "Redis 8.0+ 필요 (VADD 명령어)"}
+
+    async def vector_search(
+        self, vset_key: str, query_vector: list[float], top_k: int = 5
+    ) -> dict:
+        """Vector Set: 코사인 유사도 검색 (VSIM)"""
+        import struct
+        dim = len(query_vector)
+        fp32_bytes = struct.pack(f"{dim}f", *query_vector)
+        try:
+            raw = await self.client.execute_command(
+                "VSIM", vset_key, "FP32", fp32_bytes, "COUNT", top_k, "WITHSCORES"
+            )
+            results = []
+            for i in range(0, len(raw), 2):
+                element_id = raw[i].decode() if isinstance(raw[i], bytes) else raw[i]
+                score = float(raw[i + 1])
+                results.append({"id": element_id, "similarity": score})
+            return {
+                "vset": vset_key,
+                "top_k": top_k,
+                "results": results,
+                "operation": "VSIM",
+            }
+        except Exception as e:
+            return {"error": str(e), "note": "Redis 8.0+ 필요 (VSIM 명령어)"}
 
 
 # 싱글턴 인스턴스

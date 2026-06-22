@@ -1,9 +1,9 @@
 [project]
 name = "kafkarabbittest"
-version = "0.1.0"
-description = "Kafka, RabbitMQ, Redis 메시지 브로커 비교 학습 + 모니터링 프로젝트"
+version = "0.2.0"
+description = "Kafka, RabbitMQ, Redis 메시지 브로커 비교 학습 + MCP 서버 + 프로덕션 패턴"
 readme = "README.md"
-requires-python = ">=3.12,<4"
+requires-python = ">=3.13,<4"
 dependencies = [
     # Web Framework
     "fastapi",
@@ -16,11 +16,14 @@ dependencies = [
     # Monitoring & Metrics
     "prometheus-client",
     "prometheus-fastapi-instrumentator",
+    # MCP (Model Context Protocol) — AI 연동
+    "mcp[cli]",
     # Jupyter
     "jupyter",
     "jupyterlab",
     "matplotlib",
     "pandas",
+    "numpy",              # 벡터 연산 (MCP semantic memory)
     "rich",               # Pretty console output
     # Utilities
     "pydantic-settings",

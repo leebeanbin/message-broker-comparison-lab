@@ -18,6 +18,22 @@ router = APIRouter()
 # 모니터링
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+@router.get("/monitoring/kafka-lag", tags=["Monitoring"])
+async def get_kafka_lag():
+    """
+    Consumer Group Lag 현재 스냅샷.
+
+    lag=0 → 소비자가 실시간으로 따라잡음 (이상적)
+    lag↑  → 소비자 처리 속도 부족 신호
+    lag>10K → 프로덕션 알람 기준
+
+    15초 주기로 백그라운드 업데이트 (lag_monitor_loop).
+    Kafka가 연결되지 않은 경우 캐시가 비어 있을 수 있습니다.
+    """
+    from app.monitoring.kafka_lag import get_lag_snapshot
+    return get_lag_snapshot()
+
+
 @router.get("/monitoring/comparison", tags=["Monitoring"])
 async def get_comparison():
     """최신 벤치마크 결과 비교 (처리량/레이턴시 순위)"""

@@ -87,3 +87,44 @@ class KeyedMessageRequest(BaseModel):
 class BatchMessageRequest(BaseModel):
     """Kafka 배치 발행 요청"""
     messages: list[dict] = Field(description="메시지 리스트")
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Redis 고급 기능
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+class BloomAddRequest(BaseModel):
+    """Redis Bloom Filter 항목 추가 요청"""
+    filter_key: str = Field(description="필터 이름 (예: processed-order-ids)")
+    item: str = Field(description="추가할 항목 (예: order-12345)")
+    capacity: int = Field(default=10000, ge=100, le=10_000_000, description="예상 최대 항목 수")
+    error_rate: float = Field(default=0.01, ge=0.0001, le=0.5, description="허용 false positive 비율")
+
+
+class BloomExistsRequest(BaseModel):
+    """Redis Bloom Filter 존재 여부 확인 요청"""
+    filter_key: str
+    item: str
+    capacity: int = Field(default=10000, ge=100, le=10_000_000)
+    error_rate: float = Field(default=0.01, ge=0.0001, le=0.5)
+
+
+class TimeSeriesAddRequest(BaseModel):
+    """Redis TimeSeries 데이터 포인트 추가 요청"""
+    series_key: str = Field(description="시계열 이름 (예: broker.kafka.throughput)")
+    value: float = Field(description="측정값")
+    timestamp_ms: int | None = Field(default=None, description="타임스탬프(ms), None이면 현재 시각")
+
+
+class VectorAddRequest(BaseModel):
+    """Redis Vector Set 벡터 추가 요청"""
+    vset_key: str = Field(description="벡터 세트 이름 (예: ai:memories)")
+    element_id: str = Field(description="벡터 식별자")
+    vector: list[float] = Field(description="FP32 벡터 (Redis 8.0+ VADD)")
+
+
+class VectorSearchRequest(BaseModel):
+    """Redis Vector Set 유사도 검색 요청"""
+    vset_key: str
+    query_vector: list[float]
+    top_k: int = Field(default=5, ge=1, le=100)

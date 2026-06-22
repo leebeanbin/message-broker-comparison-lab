@@ -1,0 +1,150 @@
+{
+  "__inputs": [],
+  "__requires": [],
+  "annotations": { "list": [] },
+  "description": "Message Broker Comparison Lab — Redis/RabbitMQ/Kafka 성능 + 프로덕션 패턴",
+  "editable": true,
+  "graphTooltip": 1,
+  "id": null,
+  "panels": [
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "palette-classic" },
+          "custom": { "lineWidth": 2, "fillOpacity": 10 },
+          "unit": "ms"
+        }
+      },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "id": 1,
+      "options": { "legend": { "displayMode": "list" }, "tooltip": { "mode": "multi" } },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.99, sum(rate(broker_publish_latency_seconds_bucket[1m])) by (broker, le)) * 1000",
+          "legendFormat": "P99 {{broker}}"
+        },
+        {
+          "expr": "histogram_quantile(0.50, sum(rate(broker_publish_latency_seconds_bucket[1m])) by (broker, le)) * 1000",
+          "legendFormat": "P50 {{broker}}"
+        }
+      ],
+      "title": "Publish Latency (P50 / P99)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "palette-classic" },
+          "custom": { "lineWidth": 2 },
+          "unit": "reqps"
+        }
+      },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "id": 2,
+      "targets": [
+        {
+          "expr": "sum(rate(broker_publish_count_total[1m])) by (broker)",
+          "legendFormat": "{{broker}}"
+        }
+      ],
+      "title": "처리량 (msg/s)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "palette-classic" },
+          "custom": { "lineWidth": 2, "fillOpacity": 20 },
+          "unit": "short",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "yellow", "value": 1000 },
+              { "color": "red", "value": 10000 }
+            ]
+          }
+        }
+      },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 },
+      "id": 3,
+      "targets": [
+        {
+          "expr": "kafka_consumer_group_lag_sum",
+          "legendFormat": "{{group}} / {{topic}}"
+        }
+      ],
+      "title": "Kafka Consumer Lag",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            { "options": { "0": { "text": "CLOSED", "color": "green" } }, "type": "value" },
+            { "options": { "1": { "text": "HALF_OPEN", "color": "yellow" } }, "type": "value" },
+            { "options": { "2": { "text": "OPEN", "color": "red" } }, "type": "value" }
+          ],
+          "unit": "short",
+          "color": { "mode": "thresholds" }
+        }
+      },
+      "gridPos": { "h": 8, "w": 6, "x": 12, "y": 8 },
+      "id": 4,
+      "options": { "colorMode": "background", "reduceOptions": { "calcs": ["lastNotNull"] } },
+      "targets": [
+        {
+          "expr": "circuit_breaker_state",
+          "legendFormat": "{{broker}}"
+        }
+      ],
+      "title": "Circuit Breaker 상태",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "yellow", "value": 40 },
+              { "color": "red", "value": 80 }
+            ]
+          }
+        },
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "redis" }, "properties": [{ "id": "max", "value": 100 }] },
+          { "matcher": { "id": "byName", "options": "rabbitmq" }, "properties": [{ "id": "max", "value": 50 }] },
+          { "matcher": { "id": "byName", "options": "kafka" }, "properties": [{ "id": "max", "value": 30 }] }
+        ]
+      },
+      "gridPos": { "h": 8, "w": 6, "x": 18, "y": 8 },
+      "id": 5,
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "orientation": "auto" },
+      "targets": [
+        {
+          "expr": "backpressure_active_requests",
+          "legendFormat": "{{broker}}"
+        }
+      ],
+      "title": "Backpressure 활성 요청",
+      "type": "gauge"
+    }
+  ],
+  "refresh": "10s",
+  "schemaVersion": 38,
+  "tags": ["broker", "redis", "kafka", "rabbitmq", "mcp"],
+  "time": { "from": "now-30m", "to": "now" },
+  "timepicker": {},
+  "title": "Message Broker Lab",
+  "uid": "broker-lab-v2",
+  "version": 2
+}

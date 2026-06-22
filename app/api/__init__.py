@@ -14,6 +14,7 @@ from . import (
     monitoring_routes,
     rabbitmq_routes,
     redis_routes,
+    resilience_routes,
 )
 
 router = APIRouter()
@@ -25,3 +26,4 @@ router.include_router(rabbitmq_routes.router)
 router.include_router(kafka_routes.router)
 router.include_router(benchmark_routes.router)
 router.include_router(monitoring_routes.router)
+router.include_router(resilience_routes.router)

@@ -2,6 +2,9 @@
 Prometheus 메트릭 + 커스텀 모니터링
 - 각 브로커별 발행/소비 지연시간 추적
 - 처리량(throughput) 카운터
+- Kafka Consumer Lag (kafka_lag.py에서 업데이트)
+- Circuit Breaker 상태 (resilience/circuit_breaker.py에서 업데이트)
+- Backpressure 동시성 (resilience/backpressure.py에서 업데이트)
 - Prometheus /metrics 엔드포인트 자동 노출
 """
 

@@ -1,11 +1,21 @@
 """
-Redis 엔드포인트 (Pub/Sub, Stream, Queue, Cache, Rate Limiter)
+Redis 엔드포인트 (Pub/Sub, Stream, Queue, Cache, Rate Limiter, Bloom Filter, TimeSeries, Vector Set)
 """
 
 from fastapi import APIRouter, HTTPException, Query
 
 from app.brokers import redis_broker
-from app.schemas import CacheRequest, KVSetRequest, ListPushRequest, MessageRequest
+from app.schemas import (
+    BloomAddRequest,
+    BloomExistsRequest,
+    CacheRequest,
+    KVSetRequest,
+    ListPushRequest,
+    MessageRequest,
+    TimeSeriesAddRequest,
+    VectorAddRequest,
+    VectorSearchRequest,
+)
 
 router = APIRouter(prefix="/redis", tags=["Redis"])
 
@@ -240,3 +250,119 @@ async def rate_limit_check(
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Rate limit 체크 실패: {e}")
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Bloom Filter (Redis BITFIELD 기반 확률적 자료구조)
+#   false positive 가능, false negative 불가
+#   용도: 메시지 중복 처리 방지, 이미 처리한 ID 추적
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+@router.post("/bloom/add", tags=["Redis - Bloom Filter"])
+async def bloom_add(req: BloomAddRequest):
+    """Bloom Filter: 항목 추가. 같은 파라미터로 EXISTS를 해야 올바른 결과."""
+    try:
+        return await redis_broker.bloom_add(
+            req.filter_key, req.item, req.capacity, req.error_rate
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Bloom ADD 실패: {e}")
+
+
+@router.post("/bloom/exists", tags=["Redis - Bloom Filter"])
+async def bloom_exists(req: BloomExistsRequest):
+    """Bloom Filter: 항목 존재 여부 확인 (False=확실히 없음, True=있을 수도 있음)"""
+    try:
+        return await redis_broker.bloom_exists(
+            req.filter_key, req.item, req.capacity, req.error_rate
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Bloom EXISTS 실패: {e}")
+
+
+@router.get("/bloom/info/{filter_key}", tags=["Redis - Bloom Filter"])
+async def bloom_info(filter_key: str):
+    """Bloom Filter: 필터 크기 및 세트된 비트 수 조회"""
+    try:
+        return await redis_broker.bloom_info(filter_key)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Bloom INFO 실패: {e}")
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# TimeSeries (Redis Sorted Set 기반)
+#   score=타임스탬프(ms), member=값
+#   용도: AI 응답 시간, 브로커 처리량, 사용자 활동
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+@router.post("/ts/add", tags=["Redis - TimeSeries"])
+async def ts_add(req: TimeSeriesAddRequest):
+    """TimeSeries: 데이터 포인트 추가"""
+    try:
+        return await redis_broker.ts_add(
+            req.series_key, req.value, req.timestamp_ms
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"TimeSeries ADD 실패: {e}")
+
+
+@router.get("/ts/range/{series_key}", tags=["Redis - TimeSeries"])
+async def ts_range(
+    series_key: str,
+    from_ms: int | None = Query(default=None, description="시작 타임스탬프(ms)"),
+    to_ms: int | None = Query(default=None, description="종료 타임스탬프(ms)"),
+    count: int = Query(default=100, ge=1, le=10000),
+):
+    """TimeSeries: 시간 범위 조회"""
+    try:
+        return await redis_broker.ts_range(series_key, from_ms, to_ms, count)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"TimeSeries RANGE 실패: {e}")
+
+
+@router.get("/ts/latest/{series_key}", tags=["Redis - TimeSeries"])
+async def ts_latest(
+    series_key: str,
+    n: int = Query(default=10, ge=1, le=1000),
+):
+    """TimeSeries: 최근 N개 데이터 포인트"""
+    try:
+        return await redis_broker.ts_latest(series_key, n)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"TimeSeries LATEST 실패: {e}")
+
+
+@router.delete("/ts/trim/{series_key}", tags=["Redis - TimeSeries"])
+async def ts_trim(
+    series_key: str,
+    max_age_seconds: int = Query(default=86400, description="이보다 오래된 데이터 삭제"),
+):
+    """TimeSeries: 보존 정책 적용 (오래된 데이터 삭제)"""
+    try:
+        return await redis_broker.ts_trim(series_key, max_age_seconds)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"TimeSeries TRIM 실패: {e}")
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Vector Set (Redis 8.0+ VADD/VSIM)
+#   코사인 유사도 기반 최근접 이웃 검색
+#   용도: AI Semantic Memory, RAG, 추천
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+@router.post("/vector/add", tags=["Redis - Vector Set"])
+async def vector_add(req: VectorAddRequest):
+    """Vector Set: 벡터 추가 (Redis 8.0+ VADD)"""
+    try:
+        return await redis_broker.vector_add(req.vset_key, req.element_id, req.vector)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Vector ADD 실패: {e}")
+
+
+@router.post("/vector/search", tags=["Redis - Vector Set"])
+async def vector_search(req: VectorSearchRequest):
+    """Vector Set: 코사인 유사도 기반 최근접 이웃 검색 (Redis 8.0+ VSIM)"""
+    try:
+        return await redis_broker.vector_search(req.vset_key, req.query_vector, req.top_k)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Vector SEARCH 실패: {e}")
